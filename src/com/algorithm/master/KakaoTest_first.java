@@ -12,73 +12,59 @@ import java.util.List;
 public class KakaoTest_first {
     public static void main(String [] args){
 
-        System.out.println(secretMaps(5));
+        //problem 1 : Secret Maps
+        System.out.println(secretMaps(6));
+
     }
 
-    /*
-        n : 5
-        arr1 : [9, 20, 28, 18, 11]
-        arr1 : [30, 1, 21, 17, 28]
-     */
-     /*
-        n : 6
-        arr1 : [46, 33, 33, 22, 31, 50]
-        arr1 : [27, 56, 19, 14, 14, 10]
-     */
-
-    // problem 1. Secret Maps
-    public static String secretMaps(int n){
-        int [] arr1= {28};
-        int [] arr2= {21};
-//        int [] arr1= {9, 20, 28, 18, 11};
-//        int [] arr2= {0, 1, 21, 17, 28};
-
+    // problem 1
+    public static List secretMaps(int n){
+        int [] arr1= {46, 33, 33 ,22, 31, 50};
+        int [] arr2= {27 ,56, 19, 14, 14, 10};
 
         List<String> resultArray = new ArrayList<>();
         int temp1;
         int temp2;
-        int mok1=0;
-        int mok2=0;
-        String result;
-        String resultString = "";
-
+        String tempString;
 
         for(int j=0; j<arr1.length;j++){
+            StringBuffer result = new StringBuffer();
             for(int i=0; i<n; i++){
                 // arr1
-                System.out.println(i+"번째 : "+arr1[j] + " /// "+arr2[j]);
                 temp1 = arr1[j] % 2;
                 arr1[j]=arr1[j]/2;
 
                 // arr2
                 temp2 = arr2[j] % 2;
-                mok2=arr2[j]/2;
-
-                System.out.println("temp값 : "+temp1 + "/// "+temp2);
+                arr2[j]=arr2[j]/2;
 
                 if(temp1+temp2>0){
-                    result = "#";
+                    tempString = "#";
                 }else{
-                    result =" ";
+                    tempString =" ";
                 }
-                resultString +=result;
-//                System.out.println(resultString);
+                result.append(tempString);
             }
-
+            resultArray.add(result.reverse().toString());
+            result.append("");
         }
-        resultArray.add(resultString);
-        Collections.reverse(resultArray);
-        System.out.println("result : "+resultString);
-//        System.out.println("resultArray : "+resultArray);
 
-        return "";
+        return resultArray;
     }
 
-    public static List resultMethod(String result){
-        result+=result;
-        List<String> resultList = new ArrayList<>();
+    // problem 2. Dart Game
+    public static int dartGame(){
+        int result =0;
 
-        return resultList;
+        int sido=3;
+        int point = 10;
+        /*
+            기회 : 3
+            점수 : 0~10
+            보너스 : S=point^1, D=point^2, T=point^3
+            보상 : * = sido = point*2, sido-1=(point*2)
+                  # = -point
+         */
+        return result;
     }
 }
-
