@@ -24,7 +24,7 @@ public class KakaoTest_second {
      * 0~10의 정수와 문자 S, D, T, *, #로 구성된 문자열이 입력될 시 총점수를 반환하는 함수를 작성하라.
      * <p>
      * <p>
-     * 1  1S2D*3T	    37	    1^1 * 2 + 2^2 * 2 + 3^3
+     * 1    1S2D*3T	    37	    1^1 * 2 + 2^2 * 2 + 3^3
      * 2	1D2S#10S	9	    1^2 + 2^1 * (-1) + 10^1
      * 3	1D2S0T	    3	    1^2 + 2^1 + 0^3
      * 4	1S*2T*3S	23	    1^1 * 2 * 2 + 2^3 * 2 + 3^1
@@ -34,35 +34,34 @@ public class KakaoTest_second {
      */
 
     public static void main(String[] args) {
-//        String p = "1S2D*3T";
-        String p = "1D2D*";
-        System.out.print("최종 결과 : "+dartGame(p));
+        String p = "1D2S#10S";
+        System.out.print("최종 결과 : "+ returnValue(dartGame(p)));
     }
 
-
-    public static boolean isNumber(String var) {
-        Pattern p = Pattern.compile("(^[0-9]*$)");
-        Matcher matcher = p.matcher(var);
-        if (matcher.find()) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static int dartGame(String aaa) {
+    public static int[] dartGame(String aaa) {
         String[] charArray = aaa.split("");
 
-        int[] result = new int[4];  // 임시 저장 공간
+        int [] result = new int[charArray.length]; // 임시 저장 공간
         int n = 0;                  // 배열 크기
         int temp = 0;               // 각 숫자별 임시 연산 값
-        int finalValue = 0;         // 최종 결과
-        int temp2 = 0 ;
+
 
         for (int i = 0; i < charArray.length; i++) {
 
             if (isNumber(charArray[i])) {
-                temp = Integer.parseInt(charArray[i]);
+                if(charArray[i].equals("0") && i>0){
+                    //temp = charArray[i - 1].equals("1") ? 10 : 0;
+                    if(charArray[i-1].equals("1")){
+                        temp = 10;
+                        result[n]=0;
+                        n--;
+                    }else{
+                        temp = Integer.parseInt(charArray[i]);
+                    }
+                }else{
+                    temp = Integer.parseInt(charArray[i]);
+                }
+
                 n++;
             } else {
                 switch (charArray[i]) {
@@ -76,25 +75,36 @@ public class KakaoTest_second {
                         if (n - 1 <= 0) {
                             temp = temp * 2;
                         } else {
-                            temp = (result[n - 1] * 2) + (temp * 2);
-                }
+                            result[n-1] =  (result[n - 1] * 2);
+                            temp = result[n] * 2;
+                        }
                         break;
                     case "#":
                         temp = result[n] * (-1);
                         break;
                 }
                 System.out.println("temp : " + temp);
-                temp2 = temp;
-                result[n] += temp2;
-                finalValue += result[n];
-                temp2=0;
+                result[n] = temp;
             }
         }
-        return finalValue;
+        return result;
     }
 
-    public static int returnValue(int temp){
+    public static boolean isNumber(String var) {
+        Pattern p = Pattern.compile("(^[0-9]*$)");
+        Matcher matcher = p.matcher(var);
+        if (matcher.find()) {
+            return true;
+        }
+        return false;
+    }
 
-        return returnValue(temp);
+    public static int returnValue(int [] resultArray){
+        int resultScore=0;
+
+        for(int i=0; i<resultArray.length; i++){
+            resultScore += resultArray[i];
+        }
+        return resultScore;
     }
 }
