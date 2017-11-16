@@ -4,12 +4,13 @@ package com.algorithm.master;
  * Created by betterFLY on 2017-11-14.
  */
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- *
- *   [입력 형식]
+
+     [입력 형식]
 
      캐시 크기(cacheSize)와 도시이름 배열(cities)을 입력받는다.
      cacheSize는 정수이며, 범위는 0 ≦ cacheSize ≦ 30 이다.
@@ -38,8 +39,6 @@ import java.util.regex.Pattern;
              2	            [“Jeju”, “Pangyo”, “NewYork”, “newyork”]	                                                                        16
              0	            [“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”]                                	                                    25
  */
-
-
 public class KakaoTest_third {
 
     private static LRUCache<String, String> lruCache;
@@ -49,10 +48,41 @@ public class KakaoTest_third {
         String problem = "[“Jeju”, “Pangyo”, “NewYork”, “newyork”]";
         int cacheSize = 2;
 
-        getLowerString(problem, cacheSize);
-        System.out.print(lruCache.cnt());
+//        getLowerString(problem, cacheSize);
+//        System.out.print(lruCache.cnt());
+
+        resultLRU(problem);
     }
 
+    public static void resultLRU(String cities){
+        String [] tempArray = cities.split(",");
+        String tempString = "";
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
+
+        for(int i=0; i<tempArray.length;i++){
+            for(int k=0; k<tempArray[i].length(); k++){
+                char temp = tempArray[i].charAt(k);
+                boolean checkAlphabet = Pattern.matches("^[a-zA-Z]*$", String.valueOf(temp));
+                if(checkAlphabet){
+                    tempString += temp;
+                }
+            }
+            map.put(""+i,tempString.toLowerCase());
+            tempString ="";
+        }
+        System.out.println(map);
+    }
+
+    /*
+        To do...
+        LinkedHashMap으로 저 Map에 있는 데이터들이 같은지를 비교해야함
+        Cache size 를 고려해서 공간 비교함 (row(가로), column(세로) 모두 고려해야함)
+
+     */
+
+
+    //이전
     public static void getLowerString(String cities, int size) {
         String[] tempArray = cities.split("");
         lruCache = new LRUCache<>(size);
@@ -72,4 +102,5 @@ public class KakaoTest_third {
         }
     }
 }
+
 
