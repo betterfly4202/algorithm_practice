@@ -51,20 +51,4 @@ public class KakaoTest_first {
 
         return resultArray;
     }
-
-    // problem 2. Dart Game
-    public static int dartGame(){
-        int result =0;
-
-        int sido=3;
-        int point = 10;
-        /*
-            기회 : 3
-            점수 : 0~10
-            보너스 : S=point^1, D=point^2, T=point^3
-            보상 : * = sido = point*2, sido-1=(point*2)
-                  # = -point
-         */
-        return result;
-    }
 }

@@ -13,6 +13,7 @@ public class RecursionClass {
         int resultValue=0;
         for(int i=0; i<n; i++){
             resultValue+=fibonacciFunc(n);
+
         }
         System.out.println("Fibonacci result : "+resultValue);
 
