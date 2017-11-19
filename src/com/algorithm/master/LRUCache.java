@@ -40,12 +40,17 @@ public class LRUCache<K,V> {
         this.cacheSize = cacheSize;
 
         int hashTableCapacity = (int)Math.ceil(cacheSize / hashTableLoadFactor) + 1;
-        map = new LinkedHashMap<K,V>(hashTableCapacity, hashTableLoadFactor, true) {
+
+
+        map = new LinkedHashMap<K,V>(hashTableCapacity, hashTableLoadFactor, false) {
+
             // (an anonymous inner class)
             private static final long serialVersionUID = 1;
             @Override protected boolean removeEldestEntry (Map.Entry<K,V> eldest) {
-                cnt+=4;
-                return size() > LRUCache.this.cacheSize; }}; }
+                return size() > LRUCache.this.cacheSize;
+            }
+        };
+    }
 
     /**
      * Retrieves an entry from the cache.<br>

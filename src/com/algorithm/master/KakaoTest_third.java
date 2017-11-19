@@ -4,6 +4,7 @@ package com.algorithm.master;
  * Created by betterFLY on 2017-11-14.
  */
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -41,65 +42,53 @@ import java.util.regex.Pattern;
  */
 public class KakaoTest_third {
 
-    private static LRUCache<String, String> lruCache;
+    private static int cnt = 0;
+    private static int cacheSize = 2;
 
 
     public static void main(String[] args) {
-        String problem = "[“Jeju”, “Pangyo”, “NewYork”, “newyork”]";
-        int cacheSize = 2;
-
-//        getLowerString(problem, cacheSize);
-//        System.out.print(lruCache.cnt());
-
+        String problem = "[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”]";
         resultLRU(problem);
     }
 
     public static void resultLRU(String cities){
         String [] tempArray = cities.split(",");
         String tempString = "";
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
+        // Linked HashMap... cacheSize로 중복값 제거
+        float   hashTableLoadFactor = 0.75f;
+        int hashTableCapacity = (int)Math.ceil(cacheSize / hashTableLoadFactor) + 1;
+        LinkedHashMap  map = new LinkedHashMap(hashTableCapacity, hashTableLoadFactor, true) {
+            public boolean removeEldestEntry(Map.Entry  eldest) {
+                return size() > cacheSize;
+            }
+        };
 
         for(int i=0; i<tempArray.length;i++){
-            for(int k=0; k<tempArray[i].length(); k++){
-                char temp = tempArray[i].charAt(k);
-                boolean checkAlphabet = Pattern.matches("^[a-zA-Z]*$", String.valueOf(temp));
-                if(checkAlphabet){
-                    tempString += temp;
+            // cacheSize == 0 이면, 계속 새로운값으로 대체되니까 계속 ++해줌..
+            // ==> 근데 이거 아님 계속 같은 도시 이름이 있을 수 있는데???
+            if(cacheSize == 0){
+                cnt+=5;
+            }else{
+                for(int k=0; k<tempArray[i].length(); k++){
+                    char temp = tempArray[i].charAt(k);
+                    boolean checkAlphabet = Pattern.matches("^[a-zA-Z]*$", String.valueOf(temp));
+                    if(checkAlphabet){
+                        tempString += temp;
+                    }
                 }
+                if(map.containsValue(tempString.toLowerCase())){
+                    cnt+=1;
+                }else{
+                    cnt+=5;
+                }
+
+                map.put(i, tempString.toLowerCase());
+                tempString ="";
             }
-            map.put(""+i,tempString.toLowerCase());
-            tempString ="";
         }
         System.out.println(map);
-    }
-
-    /*
-        To do...
-        LinkedHashMap으로 저 Map에 있는 데이터들이 같은지를 비교해야함
-        Cache size 를 고려해서 공간 비교함 (row(가로), column(세로) 모두 고려해야함)
-
-     */
-
-
-    //이전
-    public static void getLowerString(String cities, int size) {
-        String[] tempArray = cities.split("");
-        lruCache = new LRUCache<>(size);
-
-        for (int i = 0; i < tempArray.length; i++) {
-
-            String temp = tempArray[i].toLowerCase();
-
-            boolean checkAlphabet = Pattern.matches("^[a-zA-Z]*$", temp);
-            if (checkAlphabet) {
-                lruCache.put("" + i, temp);
-            }
-        }
-
-        for (Map.Entry<String, String> e : lruCache.getAll()) {
-            System.out.println(e.getKey() + " : " + e.getValue());
-        }
+        System.out.println("최종 스코어 : "+cnt);
     }
 }
 

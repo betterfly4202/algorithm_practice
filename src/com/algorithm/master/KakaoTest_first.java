@@ -3,6 +3,7 @@ package com.algorithm.master;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by betterFLY on 2017-11-06.
@@ -11,10 +12,12 @@ import java.util.List;
 // http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
 public class KakaoTest_first {
     public static void main(String [] args){
+        Scanner scan = new Scanner(System.in);      // 문자 입력을 인자로 Scanner 생성
+        System.out.println("메시지를 입력하세요:");
+        //message = scan.nextLine();
 
         //problem 1 : Secret Maps
         System.out.println(secretMaps(6));
-
     }
 
     // problem 1
