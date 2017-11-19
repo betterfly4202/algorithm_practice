@@ -1,4 +1,4 @@
-package com.algorithm.master;
+package com.algorithm.ref;
 
 import java.util.ArrayList;
 import java.util.Collection;

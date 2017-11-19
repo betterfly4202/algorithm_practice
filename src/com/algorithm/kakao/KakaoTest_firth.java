@@ -1,4 +1,4 @@
-package com.algorithm.master;
+package com.algorithm.kakao;
 
 /**
  * Created by betterFLY on 2017-11-16.

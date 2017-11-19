@@ -1,4 +1,4 @@
-package com.algorithm.master;
+package com.algorithm.kakao;
 
 import java.util.ArrayList;
 import java.util.Collections;

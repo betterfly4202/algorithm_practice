@@ -1,4 +1,4 @@
-package com.algorithm.master;
+package com.algorithm.kakao;
 
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
