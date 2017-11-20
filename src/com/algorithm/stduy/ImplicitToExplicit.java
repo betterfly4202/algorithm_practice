@@ -29,25 +29,25 @@ public class ImplicitToExplicit {
             recursion 으로 표현할때는 일반적으로 이렇게 표현하는 것은 좋지 않다 다음을 살펴보자
          */
     }
-
-    public int toExplicit(int [] data, int begin, int end, int target){
-        if(begin>end)
-            return -1;
-        else if(target == data[begin])
-            return begin;
-        else
-            return search(data, begin+1, end, target);
-
-        /*
-            같은 순차탐색을 recursion으로 표현했다
-            지금 이 재귀함수는,
-            else if (target == items[begin]
-             ==> 만약 target 값이 시작하는 값과 같다면 그 begin 값을 return 하고 종료시킨다
-             그렇지 않다면,
-             첫번째(items[begin]) 을 제외한 나머지 값들을 대입하여 결과를 도출할 수 있다
-
-         */
-    }
+//
+//    public int toExplicit(int [] data, int begin, int end, int target){
+//        if(begin>end)
+//            return -1;
+//        else if(target == data[begin])
+//            return begin;
+//        else
+//            return search(data, begin+1, end, target);
+//
+//        /*
+//            같은 순차탐색을 recursion으로 표현했다
+//            지금 이 재귀함수는,
+//            else if (target == items[begin]
+//             ==> 만약 target 값이 시작하는 값과 같다면 그 begin 값을 return 하고 종료시킨다
+//             그렇지 않다면,
+//             첫번째(items[begin]) 을 제외한 나머지 값들을 대입하여 결과를 도출할 수 있다
+//
+//         */
+//    }
 
     //매개변수의 명시화 : 최대값 찾기
     public int findMax(int [] data, int begin, int end){

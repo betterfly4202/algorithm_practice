@@ -7,40 +7,16 @@ package com.algorithm.stduy;
 
 public class RecursionClass {
     public static void main(String [] args){
-        // fibonacci test
-        int n=10;
-
-        int resultValue=0;
-        for(int i=0; i<n; i++){
-            resultValue+=fibonacciFunc(n);
-
-        }
-        System.out.println("Fibonacci result : "+resultValue);
-
-        // euclidMethod test
-        System.out.println("euclidMethod result : "+euclidMethod(6,35));
+        int n = 4;
+        int result = recursionSumFunc(n);
+        System.out.println(result);
     }
 
-    // Fibonacci Number
-    public static int fibonacciFunc(int n){
-        if(n < 2){
-            return n;
-        }else{
-            return fibonacciFunc(n-1)+fibonacciFunc(n-2);
-        }
-    }
-
-    // euclidMethod
-    public static int euclidMethod(int a, int b){
-        if(a>b){
-            int temp = b;
-            b = a;
-            a = temp;
-        }
-        if(b%a == 0){
-            return a;
-        }else{
-            return euclidMethod(a, b%a);
+    public static int recursionSumFunc(int k){
+        if(k<=0)
+            return 0;
+        else{
+            return k + recursionSumFunc(k-1);
         }
     }
 }
