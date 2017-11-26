@@ -23,17 +23,17 @@ n이 주어졌을 때, n번째 피보나치 수를 구하는 프로그램을 작
 public class FibonacciFunction {
 
     public static void main(String [] pibo){
-//        int n;
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("피보나치 수열의 수를 입력하세요 : ");
-//        n = scanner.nextInt();
-//        if(n<1 || n>1000){
-//            System.out.println("0부터 1000까지의 수를 입력해주세요.");
-//        }else{
-//            System.out.println("1~n까지의 합은 : ["+fibonacci(n)+"] 입니다");
-//        }
+        int n;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("피보나치 수열의 수를 입력하세요 : ");
+        n = scanner.nextInt();
+        if(n<1 || n>1000){
+            System.out.println("0부터 1000까지의 수를 입력해주세요.");
+        }else{
+            System.out.println("1~n까지의 합은 : ["+fibonacci(n)+"] 입니다");
+        }
 
-        System.out.println(maxGong(5,9));
+//        System.out.println(maxGong(5,9));
     }
 
     public static int fibonacci(int n){
