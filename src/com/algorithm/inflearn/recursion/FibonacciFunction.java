@@ -1,4 +1,4 @@
-package com.algorithm.stduy;
+package com.algorithm.inflearn.recursion;
 
 import java.util.Scanner;
 

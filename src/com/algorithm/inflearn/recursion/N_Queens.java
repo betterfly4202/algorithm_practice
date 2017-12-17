@@ -1,4 +1,4 @@
-package com.algorithm.stduy;
+package com.algorithm.inflearn.recursion;
 
 /**
  * Created by betterFLY on 2017. 11. 20.
