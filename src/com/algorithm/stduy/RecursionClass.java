@@ -9,7 +9,7 @@ public class RecursionClass {
     public static void main(String [] args){
         int n = 4;
         int result = recursionSumFunc(n);
-        System.out.println(result);
+        System.out.println("결과 : "+result);
     }
 
     public static int recursionSumFunc(int k){
