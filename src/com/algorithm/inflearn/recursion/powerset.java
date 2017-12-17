@@ -6,4 +6,5 @@ package com.algorithm.inflearn.recursion;
  */
 
 public class powerset {
+    
 }
