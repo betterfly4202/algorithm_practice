@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        if(N < 4 || N > 4999){
+        if(N < 3 || N > 5000){
             return;
         }
         System.out.println(deliverySugar(N));
