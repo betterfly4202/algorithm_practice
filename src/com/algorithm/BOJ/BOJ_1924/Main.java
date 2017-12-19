@@ -8,13 +8,26 @@ import java.util.Scanner;
  */
 
 public class Main {
+    static int untilDays = 0;
+    static String day = null;
     public static void main(String [] calender){
         Scanner sc = new Scanner(System.in);
         int A = sc.nextInt();
         int B = sc.nextInt();
+        int tempDays = 0;
 
         if(A<1 || A>12)
             return;
+        if(B<1 || B>31)
+            return;
+
+        for(int j=1; j<=A-1; j++){
+            tempDays += getTotalDays(j);
+        }
+        System.out.println(resultDay(tempDays+B));
+    }
+
+    public static int getTotalDays(int A){
         switch (A){
             case 1 :
             case 3 :
@@ -23,27 +36,48 @@ public class Main {
             case 8 :
             case 10 :
             case 12 :
-                if(B<1 || B>31)
-                    return;
-                System.out.println("1 3 5 월 아웃");
+                untilDays = 31;
                 break;
             case 4 :
             case 6 :
             case 9 :
             case 11 :
-                if(B<1 || B>31)
-                    return;
-                    System.out.println("4 6 9월 아웃");
+                untilDays = 30;
                 break;
             case 2 :
-                if(B<1 || B>28)
-                    return;
-                    System.out.println("2월 아웃");
+                untilDays = 28;
                 break;
             default :
-                System.out.println("A월 아웃");
                 break;
         }
 
+        return untilDays;
+    }
+
+    public static String resultDay(int totalDays){
+        switch (totalDays % 7){
+            case 0 :
+                day = "SUN";
+                break;
+            case 1 :
+                day = "MON";
+                break;
+            case 2 :
+                day = "TUE";
+                break;
+            case 3 :
+                day = "WED";
+                break;
+            case 4 :
+                day = "THU";
+                break;
+            case 5 :
+                day = "FRI";
+                break;
+            case 6 :
+                day = "SAT";
+                break;
+        }
+        return day;
     }
 }
