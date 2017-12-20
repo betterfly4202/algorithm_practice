@@ -13,18 +13,14 @@ public class Main {
 
         int A = sc.nextInt();
         String B = sc.next();
-//        String B="";
         if(A<1 || A>100)
             return;
-//        for(int i=A; i>5; i--){
-//            B+=i;
-//        }
-        System.out.println(B);
-        System.out.println(pibo(A));
-    }
-    public static int pibo(int A){
-        if(A<1)
-            return A;
-        return A + pibo(A-1);
+
+        int resultNum = 0;
+
+        for(int i=0; i<A; i++){
+            resultNum += B.charAt(i)-48;
+        }
+        System.out.println(resultNum);
     }
 }
