@@ -23,12 +23,17 @@ public class Main {
         double maxScore = doubleArray[0];
         double score = 0;
         for(int i=0; i<doubleArray.length; i++){
-            maxScore = maxScore > doubleArray[i] ? maxScore : doubleArray[i];
-            if(maxScore != doubleArray[i]){
-                score = doubleArray[i]/maxScore * 100;
-            }
+            maxScore = maxScore > doubleArray[i] ? maxScore : doubleArray[i]; // 최대값 산출
+//            if(maxScore != doubleArray[i]){
+//                score += doubleArray[i]/maxScore * 100;
+//            }
         }
-        System.out.format("%.2f%n", score);
+
+        for(int i=0; i<doubleArray.length; i++){
+            score += doubleArray[i]/maxScore * 100;
+        }
+
+        System.out.format("%.2f%n", score/doubleArray.length);
 
     }
 }
