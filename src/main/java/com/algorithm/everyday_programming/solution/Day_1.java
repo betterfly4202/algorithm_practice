@@ -1,11 +1,4 @@
 package com.algorithm.everyday_programming.solution;
-
-/**
- * Created by betterFLY on 2018. 7. 30.
- * Github : http://github.com/betterfly88
- */
-
-
 /*
     정수 배열(int array)가 주어지면 가장 큰 이어지는 원소들의 합을 구하시오. 단, 시간복잡도는 O(n).
 
