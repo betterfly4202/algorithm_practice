@@ -11,28 +11,38 @@ import java.util.List;
  */
 
 public class Main {
+    static int plusNum = 0;
     public static void main(String [] func){
-        int plusResult = 0;
         List<Integer> list = new ArrayList<>();
-        for(int i=1; i<101; i++){
+        List<Integer> resultList = new ArrayList<>();
+
+        for(int i=1; i<10001; i++){
             if(i<10){
-                plusResult = i+i;
+                plusNum = i+i;
             }else if(i >= 10){
                 String temp = String.valueOf(i);
-                int a = Integer.parseInt(String.valueOf(temp.charAt(0)));
-                int b = Integer.parseInt(String.valueOf(temp.charAt(1)));
-                plusResult = i+a+b;
+                int tempNum[] = new int[temp.length()];
+                for(int j=0; j<temp.length(); j++){
+                    tempNum[j] = Integer.parseInt(String.valueOf(temp.charAt(j)));
+                    if(j<1){
+                        plusNum = i+tempNum[j];
+                    }else{
+                        plusNum += tempNum[j];
+                    }
+                }
             }
-            list.add(plusResult);
+            list.add(plusNum);
         }
-
         Ascending asc = new Ascending();
         Collections.sort(list, asc);
-        for(int i=0; i<list.size(); i++){
-            System.out.println(list.get(i));
-//            if(i != list.get(i)){
-//                System.out.println(i);
-//            }
+        for(int i=1; i<list.size(); i++){
+            if(!list.contains(i)){
+                resultList.add(i);
+            }
+        }
+
+        for(int i=0; i <resultList.size();i++){
+            System.out.println(resultList.get(i));
         }
     }
 }
