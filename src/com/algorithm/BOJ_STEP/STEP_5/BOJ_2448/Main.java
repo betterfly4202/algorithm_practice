@@ -13,17 +13,17 @@ public class Main {
         int N = sc.nextInt();
         String space = " ";
         for(int j=0; j<N; j++){
-            space += space;
+            String tempSpace = " ";
+            space += tempSpace;
         }
 
         for(int i=1; i<=N; i++){
             if(i % 3 == 1){
-
                 System.out.println(space+"*");
             }else if(i% 3==2){
-                System.out.println("**");
+                System.out.println(space+"**");
             }else if(i % 3 ==0){
-                System.out.println("*****");
+                System.out.println(space+"*****");
             }
         }
     }
