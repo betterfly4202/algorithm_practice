@@ -1,8 +1,12 @@
 package com.algorithm.NHN_Ent.cording_party_2018_2;
 
+import javax.print.attribute.standard.NumberUp;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by betterFLY on 2018. 6. 17.
@@ -28,20 +32,20 @@ public class Main {
         ArrayList<String> arr = new ArrayList<>();
         ArrayList<String> resultArr = new ArrayList<>();
 
-
-        // 입력 받는 걸 수정해서 한줄씩 input.split("\n"); 리스트 뽑고, 파싱해서 결과 처리하기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
+        arr.add(input);
 
-        System.out.println(input);
 
-        if(input.length() > 255){
+        // 입력 받는 걸 수정해서 한줄씩 input.split("\n"); 리스트 뽑고, 파싱해서 결과 처리하기
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        String input = br.readLine();
 
+        for(String a : arr){
+            System.out.println(a);
         }
 
-        input.split("\n");
 
-        arr.add(input);
 //        /*
 //            라인 1
 //         */
@@ -87,4 +91,19 @@ public class Main {
         return String.valueOf(v);
     }
 
+    private static boolean isNumber(String str){
+        boolean result = false;
+
+        try{
+            int val = Integer.parseInt(str);
+            if(val < 0 && val > 65535){
+                throw new Exception();
+            }
+            return result;
+        }catch (NumberFormatException n){
+            return result;
+        }catch (Exception e){
+            return result;
+        }
+    }
 }
