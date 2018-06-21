@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 
 /*
-    Canvas size: 600 x 400
+    Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400
     Background color: 0xfa023d
     Number of frames: 5
     No.: width height alpha duration
@@ -29,16 +29,20 @@ public class Main {
 
         // 라인 1
         String getCanvasSize = br.readLine();
+        isValidatedString(getCanvasSize);
 
         String canvas [] =getCanvasSize.split("x");
         String canvasX = canvas[0].replaceAll("[^0-9]","");
         String canvasY = canvas[1].replaceAll("[^0-9]","");
+        isValidationNumber(canvasX);
+        isValidationNumber(canvasY);
         resultList.add(canvasX);
         resultList.add(canvasY);
 
 
         // 라인 2
         String getBgColor = br.readLine();
+        isValidatedString(getBgColor);
 
         int hexLength = getBgColor.indexOf("0x");
         String hexStr = getBgColor.substring(hexLength, getBgColor.length());
@@ -47,17 +51,21 @@ public class Main {
 
         // 라인 3
         String getFrameNum = br.readLine();
+        isValidatedString(getFrameNum);
 
         String frameNum =getFrameNum.replaceAll("[^0-9]","");
+        isValidationNumber(frameNum);
         resultList.add(frameNum);
 
         // 라인 4 - Pass
         String pass = br.readLine();
-
+        isValidatedString(pass);
         // 라인 5
         int frameCnt = Integer.parseInt(frameNum);
         for(int i=0; i<frameCnt; i++){
             String frameInfo = br.readLine();
+            isValidatedString(frameInfo);
+
             frameInfo = frameInfo.replaceAll("^\\s+","");
             String frameContents [] = frameInfo.split(" ");
 
@@ -85,7 +93,7 @@ public class Main {
         return String.valueOf(v);
     }
 
-    private static boolean isValidatedNumber(String str){
+    private static boolean isValidationNumber(String str){
         boolean result = false;
 
         try{
@@ -104,7 +112,13 @@ public class Main {
 
     private static boolean isValidatedString(String str){
         boolean result = false;
-
+        try{
+            if(str.length() > 255){
+                throw new Exception();
+            }
+        }catch (Exception e){
+            return result;
+        }
         return result;
     }
 }
