@@ -1,4 +1,4 @@
-package com.algorithm.NHN_Ent.cording_party_2018_1;
+package com.algorithm.cordingParty.line_2018_1;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

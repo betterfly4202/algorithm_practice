@@ -1,8 +1,7 @@
-package com.algorithm.NHN_Ent.cording_party_2018_2;
+package com.algorithm.cordingParty.line_2018_2;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 /**
  * Created by betterFLY on 2018. 6. 17.
@@ -10,7 +9,7 @@ import java.util.regex.Pattern;
  */
 
 /*
-    Canvas size: 600 x 6555552
+    Canvas size: 600 x 400
     Background color: 0xfa023d
     Number of frames: 5
     No.: width height alpha duration
@@ -19,31 +18,26 @@ import java.util.regex.Pattern;
     3: 360 360 yes 110
     4: 360 360 no 140
     5: 360 360 yes 115
-
-    받은걸 \n 으로 스플릿해서 하나씩 처리하면..
  */
-public class Main extends Exception{
+public class Main{
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> resultList = new ArrayList<>();
 
         // 라인 1
         String getCanvasSize = br.readLine();
-        if(isValidationString(getCanvasSize)){
-            String canvas [] =getCanvasSize.split("x");
-            String canvasX = canvas[0].replaceAll("[^0-9]","");
-            String canvasY = canvas[1].replaceAll("[^0-9]","");
-            if(isValidationNumber(canvasX) && isValidationNumber(canvasY)){
-                resultList.add(canvasX);
-                resultList.add(canvasY);
-            }
-        }
-
+        isValidationString(getCanvasSize);
+        String canvas [] =getCanvasSize.split("x");
+        String canvasX = canvas[0].replaceAll("[^0-9]","");
+        String canvasY = canvas[1].replaceAll("[^0-9]","");
+        isValidationNumber(canvasX);
+        isValidationNumber(canvasY);
+        resultList.add(canvasX);
+        resultList.add(canvasY);
 
         // 라인 2
         String getBgColor = br.readLine();
         isValidationString(getBgColor);
-
         int hexLength = getBgColor.indexOf("0x");
         String hexStr = getBgColor.substring(hexLength, getBgColor.length());
         String decValue = getHexToDec(hexStr);
@@ -52,14 +46,14 @@ public class Main extends Exception{
         // 라인 3
         String getFrameNum = br.readLine();
         isValidationString(getFrameNum);
-
-        String frameNum =getFrameNum.replaceAll("[^0-9]","");
+        String frameNum = getFrameNum.replaceAll("[^0-9]","");
         isValidationNumber(frameNum);
         resultList.add(frameNum);
 
         // 라인 4 - Pass
         String pass = br.readLine();
         isValidationString(pass);
+
         // 라인 5
         int frameCnt = Integer.parseInt(frameNum);
         for(int i=0; i<frameCnt; i++){
@@ -97,12 +91,13 @@ public class Main extends Exception{
         boolean result = false;
         try{
             int val = Integer.parseInt(str);
-            if(val < 0 && val > 65535){
+            if(val < 0 || val > 65535){
                 throw new IllegalArgumentException("자연수의 범위는 0부터 65535까지 설정 가늫압니다.");
             }
             result = true;
         }catch (IllegalArgumentException e){
             e.printStackTrace();
+            System.exit(0);
         }
 
         return result;
@@ -117,6 +112,7 @@ public class Main extends Exception{
             result = true;
         }catch (IllegalArgumentException e){
             e.printStackTrace();
+            System.exit(0);
         }
         return result;
     }
