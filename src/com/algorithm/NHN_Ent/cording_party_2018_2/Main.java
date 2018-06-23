@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 
 /*
-    Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400Canvas size: 600 x 400 Canvas size: 600 x 400Canvas size: 600 x 400
+    Canvas size: 600 x 6555552
     Background color: 0xfa023d
     Number of frames: 5
     No.: width height alpha duration
@@ -22,27 +22,27 @@ import java.util.regex.Pattern;
 
     받은걸 \n 으로 스플릿해서 하나씩 처리하면..
  */
-public class Main {
+public class Main extends Exception{
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> resultList = new ArrayList<>();
 
         // 라인 1
         String getCanvasSize = br.readLine();
-        isValidatedString(getCanvasSize);
-
-        String canvas [] =getCanvasSize.split("x");
-        String canvasX = canvas[0].replaceAll("[^0-9]","");
-        String canvasY = canvas[1].replaceAll("[^0-9]","");
-        isValidationNumber(canvasX);
-        isValidationNumber(canvasY);
-        resultList.add(canvasX);
-        resultList.add(canvasY);
+        if(isValidationString(getCanvasSize)){
+            String canvas [] =getCanvasSize.split("x");
+            String canvasX = canvas[0].replaceAll("[^0-9]","");
+            String canvasY = canvas[1].replaceAll("[^0-9]","");
+            if(isValidationNumber(canvasX) && isValidationNumber(canvasY)){
+                resultList.add(canvasX);
+                resultList.add(canvasY);
+            }
+        }
 
 
         // 라인 2
         String getBgColor = br.readLine();
-        isValidatedString(getBgColor);
+        isValidationString(getBgColor);
 
         int hexLength = getBgColor.indexOf("0x");
         String hexStr = getBgColor.substring(hexLength, getBgColor.length());
@@ -51,7 +51,7 @@ public class Main {
 
         // 라인 3
         String getFrameNum = br.readLine();
-        isValidatedString(getFrameNum);
+        isValidationString(getFrameNum);
 
         String frameNum =getFrameNum.replaceAll("[^0-9]","");
         isValidationNumber(frameNum);
@@ -59,12 +59,12 @@ public class Main {
 
         // 라인 4 - Pass
         String pass = br.readLine();
-        isValidatedString(pass);
+        isValidationString(pass);
         // 라인 5
         int frameCnt = Integer.parseInt(frameNum);
         for(int i=0; i<frameCnt; i++){
             String frameInfo = br.readLine();
-            isValidatedString(frameInfo);
+            isValidationString(frameInfo);
 
             frameInfo = frameInfo.replaceAll("^\\s+","");
             String frameContents [] = frameInfo.split(" ");
@@ -95,30 +95,30 @@ public class Main {
 
     private static boolean isValidationNumber(String str){
         boolean result = false;
-
         try{
             int val = Integer.parseInt(str);
             if(val < 0 && val > 65535){
-                //TODO : 숫자 검증 예외 처리
-                throw new Exception();
+                throw new IllegalArgumentException("자연수의 범위는 0부터 65535까지 설정 가늫압니다.");
             }
-            return result;
-        }catch (NumberFormatException n){
-            return result;
-        }catch (Exception e){
-            return result;
+            result = true;
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
         }
+
+        return result;
     }
 
-    private static boolean isValidatedString(String str){
+    private static boolean isValidationString(String str){
         boolean result = false;
         try{
             if(str.length() > 255){
-                throw new Exception();
+                throw new IllegalArgumentException("문자열의 길이는 255byte 이내만 가능합니다.");
             }
-        }catch (Exception e){
-            return result;
+            result = true;
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
         }
         return result;
     }
+
 }
