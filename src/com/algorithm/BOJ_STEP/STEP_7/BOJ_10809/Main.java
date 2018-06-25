@@ -1,5 +1,8 @@
 package com.algorithm.BOJ_STEP.STEP_7.BOJ_10809;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by betterFLY on 2018. 6. 25.
  * Github : http://github.com/betterfly88
@@ -23,10 +26,12 @@ public class Main {
          */
 
         String p = "backjoon";
-        System.out.println(p.charAt(0));
+//        System.out.println(p.charAt(0));
 
-        for(int i= 97; i< i+26; i++){
-            System.out.println((char)i);
+        Map<String, Object> alphabetContainer = new HashMap<>();
+        for(int i= 0; i< 26; i++){
+            System.out.println((char)(i+97));
+            
         }
     }
 }
