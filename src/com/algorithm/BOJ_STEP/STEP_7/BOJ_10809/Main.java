@@ -1,7 +1,6 @@
 package com.algorithm.BOJ_STEP.STEP_7.BOJ_10809;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by betterFLY on 2018. 6. 25.
@@ -25,13 +24,25 @@ public class Main {
             만약, 어떤 알파벳이 단어에 포함되어 있지 않다면 -1을 출력한다. 단어의 첫 번째 글자는 0번째 위치이고, 두 번째 글자는 1번째 위치이다.
          */
 
-        String p = "backjoon";
-//        System.out.println(p.charAt(0));
+        Scanner sc = new Scanner(System.in);
+        String p = sc.nextLine();
 
-        Map<String, Object> alphabetContainer = new HashMap<>();
+        Map<Character, Integer> alphabetContainer = new HashMap<>();
         for(int i= 0; i< 26; i++){
-            System.out.println((char)(i+97));
-            
+            alphabetContainer.put((char)(i+97), -1);
+        }
+
+        for(int i=0; i<p.length(); i++){
+            Character tempChar = p.charAt(i);
+            if(alphabetContainer.keySet().contains(tempChar)){
+                if(alphabetContainer.get(tempChar) == -1){
+                    alphabetContainer.replace(tempChar, i);
+                }
+            }
+        }
+
+        for(Integer key : alphabetContainer.values()){
+            System.out.println(key);
         }
     }
 }
