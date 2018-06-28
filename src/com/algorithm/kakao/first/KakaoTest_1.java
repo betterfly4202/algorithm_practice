@@ -1,4 +1,4 @@
-package com.algorithm.kakao;
+package com.algorithm.kakao.first;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 
 // http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
-public class KakaoTest_first {
+public class KakaoTest_1 {
     public static void main(String [] args){
         Scanner scan = new Scanner(System.in);      // 문자 입력을 인자로 Scanner 생성
         System.out.println("메시지를 입력하세요:");

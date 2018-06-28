@@ -1,4 +1,4 @@
-package com.algorithm.kakao;
+package com.algorithm.kakao.first;
 
 /**
  * Created by betterFLY on 2017-11-14.
@@ -40,7 +40,7 @@ import java.util.regex.Pattern;
              2	            [“Jeju”, “Pangyo”, “NewYork”, “newyork”]	                                                                        16
              0	            [“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”]                                	                                    25
  */
-public class KakaoTest_third {
+public class KakaoTest_3 {
 
     private static int cnt = 0;
     private static int cacheSize = 2;

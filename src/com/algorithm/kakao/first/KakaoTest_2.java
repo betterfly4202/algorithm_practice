@@ -1,4 +1,4 @@
-package com.algorithm.kakao;
+package com.algorithm.kakao.first;
 
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * Github : http://github.com/betterfly88
  */
 
-public class KakaoTest_second {
+public class KakaoTest_2 {
 
     /**
      * 다트 게임은 총 3번의 기회로 구성된다.

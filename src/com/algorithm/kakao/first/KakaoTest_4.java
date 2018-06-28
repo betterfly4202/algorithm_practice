@@ -1,4 +1,4 @@
-package com.algorithm.kakao;
+package com.algorithm.kakao.first;
 
 /**
  * Created by betterFLY on 2017-11-16.
@@ -37,7 +37,7 @@ package com.algorithm.kakao;
  *
  *
  */
-public class KakaoTest_firth {
+public class KakaoTest_4 {
     public static void main(String [] args){
         // 셔틀 운행 수 총 : n회
         // 셔틀 배차 간격 : t분
