@@ -1,5 +1,7 @@
 package com.algorithm.woowahanbros.test;
 
+import java.util.Stack;
+
 /**
  * Created by betterFLY on 2018. 7. 6.
  * Github : http://github.com/betterfly88
@@ -18,7 +20,64 @@ public class firstTest {
      *  모든 작업을 처리 한 후 스택에서 최상위 값을 반환
      *
      */
-    public static void main(String [] args){
 
+    static Stack<Integer> integerStack = new Stack<>();
+
+    public static void main(String [] args){
+        String problem =  "13 DUP 4 POP 5 DUP + DUP + -";
+        String [] spl = problem.split("\\s");
+
+        for(String value : spl){
+            if(isInteger(value)){
+                integerStack.push(Integer.parseInt(value));
+            }
+            selectOperator(value);
+        }
+
+        int result = integerStack.pop();
+        System.out.println(result);
     }
+
+    public static void selectOperator(String value){
+        switch(value){
+            case "POP" : isPop();
+                break;
+            case "DUP" : isDuplicate();
+                break;
+            case "+" : isPlus();
+                break;
+            case "-" : isMinus();
+                break;
+        }
+    }
+
+    public static boolean isInteger(String value){
+        try{
+            Integer.parseInt(value);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
+    }
+
+    public static void isPop(){
+        integerStack.pop();
+    }
+
+    public static void isDuplicate(){
+        integerStack.push(integerStack.peek());
+    }
+
+    public static void isPlus(){
+        int v1 = integerStack.pop();
+        int v2 = integerStack.pop();
+        integerStack.push(v1+v2);
+    }
+
+    public static void isMinus(){
+        int v1 = integerStack.pop();
+        int v2 = integerStack.pop();
+        integerStack.push(v1-v2);
+    }
+
 }
