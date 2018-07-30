@@ -28,4 +28,9 @@ package com.algorithm.everyday_programming.solution;
     Output: 9 // 2 + 4 + (-2) + (-3) + 8
  */
 public class Day_1 {
+    public static void main(String [] args){
+        int [] i = new int[]{-1, 3,-1, 5};
+        System.out.println(i[0]);
+        
+    }
 }
