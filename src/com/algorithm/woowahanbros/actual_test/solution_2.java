@@ -1,6 +1,9 @@
 package com.algorithm.woowahanbros.actual_test;
 
+import com.sun.xml.internal.ws.policy.sourcemodel.AssertionData;
+import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import sun.jvm.hotspot.utilities.Assert;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -68,44 +72,55 @@ import java.util.stream.Stream;
  2018-08-02|10006|A02
  2018-08-03|10006|A04
  2018-08-10|10007|A09
+ */
 
+
+/*
+ 2018-08-03|10006|A01
+ 2018-08-04|10003|A01
+ 2018-08-04|10003|A01
+
+ 2018-08-02|10006|A02
+ 2018-08-03|10001|A02
+ 2018-08-02|10001|A02
+ 2018-08-08|10001|A02
+
+ 2018-08-03|10006|A04
+ 2018-08-02|10003|A04
+
+ 2018-08-08|10001|A05
+ 2018-08-05|10001|A05
+
+ 2018-08-04|10003|A06
+
+ 2018-08-09|10001|A07
+
+ 2018-08-10|10007|A09 //false
+ 2018-08-01|10004|A09 //false
+ 2018-08-10|10007|A09 //false
  */
 public class solution_2 {
     static ArrayList<String> codeList = new ArrayList<>();
+    static HashMap<String, HashMap<String, Integer>> codeMap = new HashMap<>();
+    static HashMap<String, Integer> areaMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = null;
 
         while((input=br.readLine()) != null){
-//            statisticsProcedure(input);
-
-            String [] splitValue = input.split("\\|");
-            String [] checkDate = splitValue[0].split("-");
-            int date = Integer.parseInt(checkDate[2]);
-
-            //codeList
-//        ArrayList<HashMap<String, String>> codeList = new ArrayList<>();
-//        HashMap<String, ArrayList<String>> codeMap = new HashMap<>();
-//        codeMap.containsKey("A02");
-
-            if(countDate(date)){
-                // <Area, Code List> area 안에 코드들있어서 그 코드 카운트하면되는데.
-                if(!codeList.contains(splitValue[2])){
-                    codeList.add(splitValue[2]);
-                }
+            if(input.length() < 1){
+                br.close();
+                break;
             }
+            statisticsProcedure(input);
         }
 
-        br.close();
-
-        for(String aa : codeList){
-            System.out.println(aa);
+        System.out.println(codeMap.keySet());
+        System.out.println(codeMap.values());
+        for(String a : codeList){
+            System.out.println(a);
         }
-
-        System.out.println("종료");
-//        Stream<String> stream = br.lines();
-//        stream.forEach(lineStr -> statisticsProcedure(lineStr));
     }
 
     public static void statisticsProcedure(String lineStr){
@@ -119,6 +134,13 @@ public class solution_2 {
 //        codeMap.containsKey("A02");
 
         if(countDate(date)){
+            if(areaMap.containsKey(splitValue[1])){
+                areaMap.put(splitValue[1],areaMap.get(splitValue[1])+1);
+            }else{
+                areaMap.put(splitValue[1], 1);
+            }
+            codeMap.put(splitValue[2], areaMap);
+
             // <Area, Code List> area 안에 코드들있어서 그 코드 카운트하면되는데.
             if(!codeList.contains(splitValue[2])){
                 codeList.add(splitValue[2]);
