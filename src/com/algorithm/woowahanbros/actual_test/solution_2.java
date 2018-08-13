@@ -1,18 +1,10 @@
 package com.algorithm.woowahanbros.actual_test;
 
-import com.sun.xml.internal.ws.policy.sourcemodel.AssertionData;
-import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-import sun.jvm.hotspot.utilities.Assert;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * Created by betterFLY on 2018. 8. 11.
@@ -81,15 +73,15 @@ import java.util.stream.Stream;
  2018-08-04|10003|A01
 
  2018-08-02|10006|A02
- 2018-08-03|10001|A02
  2018-08-02|10001|A02
+ 2018-08-03|10001|A02
  2018-08-08|10001|A02
 
- 2018-08-03|10006|A04
  2018-08-02|10003|A04
+ 2018-08-03|10006|A04
 
- 2018-08-08|10001|A05
  2018-08-05|10001|A05
+ 2018-08-08|10001|A05
 
  2018-08-04|10003|A06
 
@@ -101,8 +93,11 @@ import java.util.stream.Stream;
  */
 public class solution_2 {
     static ArrayList<String> codeList = new ArrayList<>();
+    // <상품코드>, <지역코드, 갯수>
     static HashMap<String, HashMap<String, Integer>> codeMap = new HashMap<>();
     static HashMap<String, Integer> areaMap = new HashMap<>();
+
+    static HashMap<String, String> tempMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -118,7 +113,7 @@ public class solution_2 {
 
         System.out.println(codeMap.keySet());
         System.out.println(codeMap.values());
-        for(String a : codeList){
+        for(String a : tempMap.values()){
             System.out.println(a);
         }
     }
@@ -128,18 +123,24 @@ public class solution_2 {
         String [] checkDate = splitValue[0].split("-");
         int date = Integer.parseInt(checkDate[2]);
 
-        //codeList
-//        ArrayList<HashMap<String, String>> codeList = new ArrayList<>();
-//        HashMap<String, ArrayList<String>> codeMap = new HashMap<>();
-//        codeMap.containsKey("A02");
-
         if(countDate(date)){
+            //Key setting
+            if(!codeMap.containsKey(splitValue[2])){ // code 값 없으면 새로 생성
+                if(!areaMap.containsKey(splitValue[1])){ // area 값 없으면 새로 생성
+                    areaMap.put(splitValue[1], 1);
+                }
+                codeMap.put(splitValue[2], areaMap);
+            }
+
+
             if(areaMap.containsKey(splitValue[1])){
                 areaMap.put(splitValue[1],areaMap.get(splitValue[1])+1);
             }else{
-                areaMap.put(splitValue[1], 1);
+
             }
-            codeMap.put(splitValue[2], areaMap);
+
+            tempMap.put(splitValue[2], splitValue[1]);
+
 
             // <Area, Code List> area 안에 코드들있어서 그 코드 카운트하면되는데.
             if(!codeList.contains(splitValue[2])){
