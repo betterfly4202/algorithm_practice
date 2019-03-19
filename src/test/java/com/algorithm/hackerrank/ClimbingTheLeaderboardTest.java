@@ -4,7 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.util.stream.Stream.of;
 import static org.junit.Assert.*;
 
 /**
@@ -97,5 +99,100 @@ public class ClimbingTheLeaderboardTest {
         for (int aa : rank){
             System.out.println(aa);
         }
+    }
+
+    @Test
+    public void stream_test(){
+        Integer [] scores = new Integer []{130, 50 , 90, 10, 70, 60 ,70};
+        Integer [] alice = new Integer []{80, 140 , 80, 10, 50};
+
+        // 130, 90, 70, 60, 50 , 10
+        // 10, 50 , 80, 140
+        // 6, 5, 3, 1
+
+        int [] rank = new int[alice.length];
+
+        AtomicInteger order = new AtomicInteger(0);
+        AtomicInteger count = new AtomicInteger(0);
+        Arrays.stream(alice).distinct().sorted().forEach(e ->{
+            Arrays.stream(scores).distinct().sorted(
+                    new Comparator<Integer>() {
+                        @Override
+                        public int compare(Integer o1, Integer o2) {
+                            return o2.compareTo(o1);
+                        }
+                    }).forEach(k ->{
+                int compareValue = e.compareTo(k);
+                // e > k = 1,  e==k = 0, e<k = -1
+                switch (compareValue){
+                    case 1 : rank[order.get()] = count.get();
+                        return;
+                    case 0 : rank[order.get()] = count.get()+1;
+                        return;
+                    case -1 : rank[order.get()] = count.get()+2;
+                        break;
+                }
+
+                count.getAndIncrement();
+//                if(compareValue == 1 || compareValue ==0){
+//                    return;
+//                }
+            });
+            count.set(0);
+            order.getAndIncrement();
+        });
+
+
+        for (int dd : rank){
+            System.out.println("zz : " + dd);
+        }
+    }
+
+    @Test
+    public void arrayTest(){
+        Integer [] scores = new Integer []{100,90,90,80,75,60};
+        Integer [] alice = new Integer []{50,65,77,90,102};
+
+        // 100, 90, 80, 75, 60
+        // 50, 65, 77 90, 102
+        // 6, 5 , 4, 2, 1
+
+        List<Integer> scoreList = new ArrayList<>();
+        List<Integer> aliceList = new ArrayList<>();
+        for(int t : scores){
+            if(!scoreList.contains(t)){
+                scoreList.add(t);
+            }
+        }
+
+        for(int t : alice){
+            if(!aliceList.contains(t)){
+                aliceList.add(t);
+            }
+        }
+
+        Collections.sort(scoreList, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2.compareTo(o1);
+            }
+        });
+
+        Collections.sort(aliceList, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+
+        int [] rank = new int[aliceList.size()];
+
+        for(int i=0; i<aliceList.size(); i++){
+            for(int k=0; k<scoreList.size(); k++) {
+
+            }
+        }
+
     }
 }

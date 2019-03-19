@@ -64,12 +64,32 @@ public class ClimbingTheLeaderboard {
 
         String [] scores = br.readLine().split(" ");
 
-        for(int i=0; i < playerScoreList.size(); i++){
+        for(int i=0; i < scores.length; i++){
             int tempScores = Integer.parseInt(scores[i]);
             if(!playerScoreList.contains(tempScores)){
                 playerScoreList.add(tempScores);
             }
         }
+
+        String [] aliceScores = br.readLine().split(" ");
+
+        for(int i=0; i < aliceScores.length; i++){
+            int tempScores = Integer.parseInt(aliceScores[i]);
+            if(!aliceScoreList.contains(tempScores)){
+                aliceScoreList.add(tempScores);
+            }
+        }
+
+        for (int s : playerScoreList){
+            System.out.print("   playerList : "+s);
+        }
+
+        System.out.println();
+
+        for (int s : aliceScoreList){
+            System.out.print("   aliceList : "+s);
+        }
+
     }
 
     public class Descending implements Comparator<Integer> {
