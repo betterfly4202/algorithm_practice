@@ -2,6 +2,7 @@ package com.algorithm.codility.Lessons_1;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by betterFLY on 2018. 8. 8.
@@ -33,7 +34,7 @@ import java.util.Collections;
 
 public class main {
     public static void main(String [] args){
-        ArrayList<Integer> decimalArr = new ArrayList<>();
+        List<Integer> decimalArr;
         decimalArr = decimalToBinary(529);
         Collections.reverse(decimalArr);
 
@@ -53,8 +54,8 @@ public class main {
 
     }
 
-    public static ArrayList<Integer> decimalToBinary(int decimalNum){
-        ArrayList<Integer> binaryArray = new ArrayList<>();
+    public static List<Integer> decimalToBinary(int decimalNum){
+        List<Integer> binaryArray = new ArrayList<Integer>();
         while(decimalNum != 0){
             binaryArray.add(decimalNum % 2);
             decimalNum = decimalNum / 2; // 몫
