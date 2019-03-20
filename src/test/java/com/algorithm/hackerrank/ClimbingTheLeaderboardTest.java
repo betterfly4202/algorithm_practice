@@ -153,9 +153,7 @@ public class ClimbingTheLeaderboardTest {
         Integer [] scores = new Integer []{100,90,90,80,75,60};
         Integer [] alice = new Integer []{50,65,77,90,102};
 
-        // 100, 90, 80, 75, 60
-        // 50, 65, 77 90, 102
-        // 6, 5 , 4, 2, 1
+
 
         List<Integer> scoreList = new ArrayList<>();
         List<Integer> aliceList = new ArrayList<>();
@@ -186,13 +184,81 @@ public class ClimbingTheLeaderboardTest {
         });
 
 
+        for (int dd : scoreList){
+            System.out.print(dd + ", ");
+        }
+        System.out.println();
+        for (int dd : aliceList){
+            System.out.print(dd + ", ");
+        }
+        System.out.println();
+
         int [] rank = new int[aliceList.size()];
 
+        // 100, 90, 80, 75, 60
+        // 50, 65, 77 90, 102
+        // 6, 5 , 4, 2, 1
         for(int i=0; i<aliceList.size(); i++){
             for(int k=0; k<scoreList.size(); k++) {
+                int as = aliceList.get(i);
+                int ss = scoreList.get(k);
 
+                int compareValue = aliceList.get(i).compareTo(scoreList.get(k));
+
+                switch(compareValue){
+                    case 1 : rank[i] = k == 0 ? 1 : k+1;
+                        break;
+                    case 0 : rank[i] = k;
+                        break;
+                    case -1 : rank[i] = k+1;
+                        break;
+                }
+
+                if(compareValue == 1 || compareValue == 0){
+                    break;
+                }
             }
         }
 
+        for (int a : rank){
+            System.out.println(a);
+        }
+
+    }
+
+    /*
+    int[] array = of(scores).distinct().toArray();
+    int i = array.length-1;
+    for(int score: alice) {
+        while(i>=0) {
+            if(score>=array[i]) i--;
+            else {System.out.println(i+2); break;}
+        }
+        if(i<0) System.out.println(1);
+    }
+     */
+
+    @Test
+    public void toArray(){
+        Integer [] scores = new Integer []{100,90,90,80,96,75,60};
+        Integer [] alice = new Integer []{50,65,75,90,102};
+
+        Object[] arr = of(scores).distinct().toArray();
+        int i = arr.length -1;
+
+       for(int s : alice){
+           while(i >= 0){
+               if(s >= (int) arr[i]){
+                   i--;
+               }else{
+                   System.out.println(i+2);
+                   break;
+               }
+           }
+
+           if (i<0){
+               System.out.println(1);
+           }
+       }
     }
 }
