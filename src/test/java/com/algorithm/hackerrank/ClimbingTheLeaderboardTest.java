@@ -1,5 +1,6 @@
 package com.algorithm.hackerrank;
 
+import com.algorithm.hackerrank.climbing.ClimbingTheLeaderboard;
 import org.junit.Before;
 import org.junit.Test;
 

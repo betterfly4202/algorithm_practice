@@ -1,4 +1,4 @@
-package com.algorithm.hackerrank;
+package com.algorithm.hackerrank.climbing;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
