@@ -4,7 +4,8 @@ package com.algorithm.hackerrank.array_ds;
  * Created by betterfly
  * Date : 2019.04.22
  *
- * An array is a type of data structure that stores elements of the same type in a contiguous block of memory. In an array, , of size , each memory location has some unique index,  (where ), that can be referenced as  (you may also see it written as ).
+ * An array is a type of data structure that stores elements of the same type in a contiguous block of memory.
+ * In an array, , of size , each memory location has some unique index,  (where ), that can be referenced as  (you may also see it written as ).
  * Given an array, , of  integers, print each element in reverse order as a single line of space-separated integers.
  * Note: If you've already solved our C++ domain's Arrays Introduction challenge, you may want to skip this.
  *
@@ -20,20 +21,39 @@ import java.math.*;
 import java.security.*;
 import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import java.util.stream.IntStream;
+
+import static sun.security.krb5.Confounder.intValue;
 
 public class Solutions {
 
     // Complete the reverseArray function below.
     static int[] reverseArray(int[] a) {
+        Stack<Integer> stack = new Stack<>();
+        IntStream.range(0, a.length)
+                .forEach(i ->{
+                    stack.push(a[i]);
+                });
 
-        return null;
+        int [] resultArr = new int [a.length];
+        int i=0;
+        while (!stack.isEmpty()){
+            resultArr[i] = stack.pop();
+            i++;
+        }
+
+        return resultArr;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
+        int [] a = {1,4,2,3};
+        int [] result = reverseArray(a);
+
+    }
+
+    public static void soulum() throws IOException{
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int arrCount = scanner.nextInt();
