@@ -48,12 +48,6 @@ public class Solutions {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        int [] a = {1,4,2,3};
-        int [] result = reverseArray(a);
-
-    }
-
-    public static void soulum() throws IOException{
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int arrCount = scanner.nextInt();
