@@ -54,5 +54,5 @@ public class SolutionsTest {
         return !v1.toUpperCase().equals(v2.toUpperCase());
     }
 
-    private boolean 
+
 }

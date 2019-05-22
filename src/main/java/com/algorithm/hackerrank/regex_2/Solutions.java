@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 
 
 /*
+https://www.hackerrank.com/challenges/duplicate-word/problem
+
 5
 Goodbye bye bye world world world
 Sam went went to to to his business
