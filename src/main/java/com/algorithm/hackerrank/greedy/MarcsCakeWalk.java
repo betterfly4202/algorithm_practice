@@ -1,18 +1,14 @@
 package com.algorithm.hackerrank.greedy;
 
-
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
 
 /**
  * Created by betterfly
  * Date : 2019.06.04
  */
+
+// https://www.hackerrank.com/challenges/marcs-cakewalk/problem
 public class MarcsCakeWalk {
 
     // Complete the marcsCakewalk function below.
