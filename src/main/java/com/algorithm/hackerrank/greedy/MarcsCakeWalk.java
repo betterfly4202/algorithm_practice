@@ -2,6 +2,7 @@ package com.algorithm.hackerrank.greedy;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Created by betterfly
@@ -12,10 +13,40 @@ import java.util.*;
 public class MarcsCakeWalk {
 
     // Complete the marcsCakewalk function below.
+
+
+    /*
+        [input]
+        3
+        1 3 2
+
+        [output]
+        11
+
+        [input]
+        4
+        7 4 9 6
+
+        [output]
+        79
+     */
     static long marcsCakewalk(int[] calorie) {
 
         return 1;
     }
+
+    public long walks(int[] calorie) {
+
+        IntStream.rangeClosed(0, calorie.length)
+                 .forEach(v ->{
+
+                 });
+
+
+        return 1;
+    }
+
+
 
     private static final Scanner scanner = new Scanner(System.in);
 
