@@ -36,13 +36,18 @@ public class MarcsCakeWalk {
     }
 
     public long walks(int[] calorie) {
+        /*
+            1. sorting
+            2. Math.pow 각 제곱근 순회
+            3. 전체 더하기
+         */
 
         IntStream.rangeClosed(0, calorie.length)
                  .forEach(v ->{
 
                  });
 
-
+        Map<String, String> map = new HashMap<>();
         return 1;
     }
 
