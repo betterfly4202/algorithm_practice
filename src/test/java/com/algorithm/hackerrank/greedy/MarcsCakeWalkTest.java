@@ -8,10 +8,9 @@ import static org.junit.Assert.*;
 
 /**
  * Created by betterfly
- * Date : 2019.06.11
+ * Date : 2019.06.14
  */
-public class MinimumAbsoluteDifferenceTest {
-
+public class MarcsCakeWalkTest {
     private MarcsCakeWalk marcsCakeWalk;
 
     @Before
@@ -29,15 +28,6 @@ public class MinimumAbsoluteDifferenceTest {
     }
 
     @Test
-    public void jegob(){
-        int a = 2;
-        int b = 4;
-        int result = castToInt(Math.pow(a,b));
-
-        assertThat(result, is(16));
-    }
-
-    @Test
     public void compare_value_test(){
         int a = 10;
         int b = 10;
@@ -51,4 +41,5 @@ public class MinimumAbsoluteDifferenceTest {
     private int castToInt(Double val){
         return val.intValue();
     }
+
 }
