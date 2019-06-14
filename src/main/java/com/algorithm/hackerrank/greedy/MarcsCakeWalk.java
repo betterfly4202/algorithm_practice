@@ -11,10 +11,6 @@ import java.util.stream.IntStream;
 
 // https://www.hackerrank.com/challenges/marcs-cakewalk/problem
 public class MarcsCakeWalk {
-
-    // Complete the marcsCakewalk function below.
-
-
     /*
         [input]
         3
@@ -42,16 +38,9 @@ public class MarcsCakeWalk {
             3. 전체 더하기
          */
 
-        IntStream.rangeClosed(0, calorie.length)
-                 .forEach(v ->{
-
-                 });
-
         Map<String, String> map = new HashMap<>();
         return 1;
     }
-
-
 
     private static final Scanner scanner = new Scanner(System.in);
 
