@@ -20,15 +20,6 @@ public class MinimumAbsoluteDifferenceTest {
     }
 
     @Test
-    public void getMarcsCakeWalkCalorie(){
-        int [] calorie = {1, 5, 8, 4};
-
-        long result = marcsCakeWalk.walks(calorie);
-
-        assertThat(result, is(42));
-    }
-
-    @Test
     public void jegob(){
         int a = 2;
         int b = 4;

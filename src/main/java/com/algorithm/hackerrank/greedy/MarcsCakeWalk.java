@@ -27,19 +27,37 @@ public class MarcsCakeWalk {
         79
      */
     static long marcsCakewalk(int[] calorie) {
-
-        return 1;
+        int [] result = compareAllValues(calorie);
+        long sum = 0;
+        for (int i=0; i<result.length; i++){
+            sum += powValues(i) * result[i];
+        }
+        return sum;
     }
 
-    public long walks(int[] calorie) {
-        /*
-            1. sorting
-            2. Math.pow 각 제곱근 순회
-            3. 전체 더하기
-         */
+    private static int[] compareAllValues(int [] values){
+        int [] newResult = new int[values.length];
 
-        Map<String, String> map = new HashMap<>();
-        return 1;
+        for (int i=0; i<values.length; i++){
+            int maxVal = values[i];
+            for (int k=i+1; k < values.length; k++){
+                if (maxVal < values[k]){
+                    maxVal = values[k];
+                    int temp = values[i];
+                    values[k] = temp;
+                    values[i] = maxVal;
+                }
+            }
+
+            newResult[i] = maxVal;
+        }
+
+        return newResult;
+    }
+
+    private static long powValues(int n){
+        int x = 2;
+        return (long) Math.pow(x,n);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
