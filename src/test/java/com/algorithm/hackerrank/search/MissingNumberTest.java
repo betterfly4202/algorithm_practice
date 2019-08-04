@@ -1,5 +1,7 @@
 package com.algorithm.hackerrank.search;
 
+import com.algorithm.hackerrank.search.missingNumber.MissingNumber;
+import com.algorithm.hackerrank.search.missingNumber.Solution_Lambda;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static java.util.Arrays.stream;
 
 /**
  * Created by betterfly
@@ -85,7 +87,19 @@ public class MissingNumberTest {
 
 //        int [] arr =new int [] {11,4,11,7,13,4,12,11,10,14};
 //        int [] brr =new int [] {11,4,11,7,3,7,10,13,4,8,12,11,10,14,12};
-        int [] aa = MissingNumber.missingNumbers(arr, brr);
+        int [] aa = MissingNumber.missingNumbers(brr, arr);
+        System.out.println(
+                Arrays.stream(aa)
+                    .mapToObj(String::valueOf)
+                    .collect(Collectors.joining(" "))
+        );
+    }
 
+    @Test
+    public void solve_테스트(){
+        int [] arr = new int [] {203,204,204,205,206,207,205,208,203,206,205,206,204};
+        int [] brr = new int [] {203,204,205,206,207,208,203,204,205,206};
+
+        System.out.println(Solution_Lambda.solve(brr, arr));
     }
 }

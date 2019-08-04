@@ -15,7 +15,7 @@ package com.algorithm.codility.Lessons_2;
 
     Write a function:
 
-    class Solution { public int[] solution(int[] A, int K); }
+    class Solution_Lambda { public int[] solution(int[] A, int K); }
 
     that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
 

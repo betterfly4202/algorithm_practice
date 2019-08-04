@@ -1,12 +1,10 @@
-package com.algorithm.hackerrank.search;
+package com.algorithm.hackerrank.search.missingNumber;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by betterfly
@@ -17,7 +15,7 @@ public class MissingNumber {
     private static int maxNum = 0;
     private static int minNum = 0;
 
-    static int[] missingNumbers(int[] arr, int[] brr) {
+    public static int[] missingNumbers(int[] arr, int[] brr) {
         int oriIdx = 0;
         int missIdx = 0;
         List<Integer> resultArr = new ArrayList<>();
@@ -108,18 +106,22 @@ public class MissingNumber {
 
         int[] result = missingNumbers(arr, brr);
 
-        for (int i = 0; i < result.length; i++) {
-            bufferedWriter.write(String.valueOf(result[i]));
-
-            if (i != result.length - 1) {
-                bufferedWriter.write(" ");
-            }
-        }
-
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-
+//        for (int i = 0; i < result.length; i++) {
+//            bufferedWriter.write(String.valueOf(result[i]));
+//
+//            if (i != result.length - 1) {
+//                bufferedWriter.write(" ");
+//            }
+//        }
+//
+//        bufferedWriter.newLine();
+//
+//        bufferedWriter.close();
+        System.out.println(
+                Arrays.stream(result)
+                        .mapToObj(String::valueOf)
+                        .collect(Collectors.joining(" "))
+        );
         scanner.close();
     }
 }
