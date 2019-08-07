@@ -1,8 +1,6 @@
 package com.algorithm.hackerrank.search.radioTransmitter;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by betterfly
@@ -10,27 +8,34 @@ import java.util.stream.Stream;
  * URL : https://www.hackerrank.com/challenges/hackerland-radio-transmitters/problem
  */
 public class Solution {
-    public static int neededTransmitter(int[] k, int x){
+    public static int neededTransmitter(int[] k, int range){
         Map<Integer, Boolean> m = houseLocationWithMap(k);
-        int range = x;
+
         List<Integer> transList = new ArrayList<>();
-//        m.forEach((key, value) -> {
-//            if (!m.get(key)){
-//                int stdKey = key+range;
-//
-//                if (m.containsKey(stdKey)) {
-//                    for(int i = stdKey - range; i <= stdKey + range; i++){
-//                        if(m.containsKey(i)){
-//                            m.replace(i, true);
-//                        }
-//                    }
-//                    transList.add(stdKey);
-//                }else{
-//                    m.replace(key, true);
-//                    transList.add(key);
-//                }
-//            }
-//        });
+
+        for(Map.Entry<Integer, Boolean> tMap : m.entrySet()){
+            int key = tMap.getKey();
+            int stdKey = key+range;
+
+            if(stdKey >= getMaxKeyValue(m)){
+                transList.add(key);
+                break;
+            }
+
+            if (!m.get(key) && m.containsKey(stdKey)){
+                for(int i = key; i <= stdKey + range; i++){
+                    if(m.containsKey(i)){
+                        m.replace(i, true);
+                    }
+                }
+
+                transList.add(stdKey);
+            }else{
+                if(!m.get(key) && m.containsKey(key)){
+                    transList.add(key);
+                }
+            }
+        }
 
         return transList.size();
     }
@@ -45,6 +50,7 @@ public class Solution {
     }
 
     public static int getMaxKeyValue(Map<Integer, Boolean> m ){
-        return m.keySet().stream().mapToInt(k -> k).filter(k -> k >= 0).max().orElse(0);
+        return m.keySet().stream()
+                .mapToInt(k -> k).filter(k -> k >= 0).max().orElse(0);
     }
 }
