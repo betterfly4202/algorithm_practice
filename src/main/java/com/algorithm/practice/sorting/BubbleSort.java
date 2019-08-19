@@ -12,8 +12,8 @@ package com.algorithm.practice.sorting;
  * 3. 위 절차를 array.length 만큼 반복한다 (O(n^2))
  */
 public class BubbleSort {
-    public static int [] bubbleSort(int [] arr){
 
+    static int [] bubbleSort(int [] arr){
         for(int k=0; k<arr.length; k++){
             for(int i=0; i<arr.length-1; i++){
                 if(arr[i] > arr[i+1]){

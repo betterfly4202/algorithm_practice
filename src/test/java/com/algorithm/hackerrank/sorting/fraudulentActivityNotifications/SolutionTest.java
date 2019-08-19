@@ -16,7 +16,6 @@ public class SolutionTest {
 //    private int [] input = {9, 3};
 //    private int [] sampleArr = {1,2,3,4,5};
 
-
     @Test
     public void 기본(){
         assertThat(executor(sampleArr, input[1]), is(2));
