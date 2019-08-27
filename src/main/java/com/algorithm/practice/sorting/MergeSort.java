@@ -19,11 +19,11 @@ public class MergeSort {
     /*
     https://gmlwjd9405.github.io/2018/05/08/algorithm-merge-sort.html
      */
-
-
-    static void mergeSort(int [] arr){
+    static int [] mergeSort(int [] arr){
         int [] temp = new int [arr.length];
         mergeSort(arr, temp, 0, arr.length-1);
+
+        return arr;
     }
 
     static void mergeSort(int[] arr, int [] tmp, int start,int end){
@@ -54,6 +54,16 @@ public class MergeSort {
             }
 
             idx++;
+        }
+
+        for(int i=0; i<= mid-lArr; i++){
+            arr[idx + i] = tmp[lArr + i];
+        }
+    }
+
+    static void printArray(int [] arr){
+        for(int v : arr){
+            System.out.print(v + " , ");
         }
     }
 }
