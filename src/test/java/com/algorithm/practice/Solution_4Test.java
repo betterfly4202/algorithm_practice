@@ -24,7 +24,7 @@ public class Solution_4Test {
         assertThat(Integer.parseInt(resultVal(b)), is(6750));
         assertThat(Integer.parseInt(resultVal(c)), is(50));
         assertThat(Integer.parseInt(resultVal(d)), is(5550));
-        assertThat(Integer.parseInt(resultVal(e)), is(-5999));
-        assertThat(Integer.parseInt(resultVal(f)), is(-2215));
+        assertThat(Integer.parseInt(resultVal(e)), is(999));
+        assertThat(Integer.parseInt(resultVal(f)), is(-5221));
     }
 }

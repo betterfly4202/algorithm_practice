@@ -16,6 +16,6 @@ public class RadioSolutionTest {
 
     @Test
     public void 검증(){
-        assertThat(process(k, x[1], x[0]), is(2));
+        assertThat(process(k, x[1], x[0]), is(4));
     }
 }

@@ -18,6 +18,6 @@ public class SolutionTest {
 
     @Test
     public void 기본(){
-        assertThat(executor(sampleArr, input[1]), is(2));
+        assertThat(executor(sampleArr, input[1]), is(3));
     }
 }

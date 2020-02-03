@@ -27,7 +27,7 @@ public class SolutionTest {
     @Test
     public void 검증(){
         int [] k = {9,5,4,2,6,15,12}; // 2, 4
-        assertThat(neededTransmitter(k, x[1]), is(1));
+        assertThat(neededTransmitter(k, x[1]), is(4));
     }
 
     @Test
