@@ -1,7 +1,6 @@
 package com.algorithm.hackerrank.sorting.fraudulentActivityNotifications;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,9 +20,5 @@ public class Solution {
 
 
         return arr[1];
-    }
-
-    public static void main(String[] args) {
-
     }
 }
