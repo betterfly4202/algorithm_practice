@@ -17,13 +17,9 @@ package com.algorithm.hackerrank.array_ds;
  * Print all  integers in  in reverse order as a single line of space-separated integers.
  */
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
 import java.util.stream.IntStream;
 
-import static sun.security.krb5.Confounder.intValue;
 
 public class Solutions {
 
