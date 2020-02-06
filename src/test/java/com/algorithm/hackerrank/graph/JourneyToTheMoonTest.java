@@ -3,6 +3,9 @@ package com.algorithm.hackerrank.graph;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class JourneyToTheMoonTest {
@@ -14,8 +17,11 @@ public class JourneyToTheMoonTest {
                 {1, 2, 3},
                 {2, 3}
             };
-    private int [][] arr2 = {{0, 1}, {2, 3}, {0, 4}};
     private int [][] arr3 = {{0, 2}};
+    private int [][] arr2 = {{0, 1}, {2, 3}, {0, 4}, {1, 5}, {3, 5}};
+
+    private int [] arr4 = {0, 2, 3, 5};
+
     @Before
     public void init(){
         target = new JourneyToTheMoon();
@@ -30,12 +36,17 @@ public class JourneyToTheMoonTest {
     }
 
     @Test
-    public void 배열확인(){
-        System.out.println(arr1[0][1]);
-        assertTrue(arr1[0].length==3);
+    public void 리스트_중복검사(){
+        List<Integer> a = Arrays.asList(1,2,3);
+        List<Integer> b = Arrays.asList(2,3,4);
 
-        arr1[0][4]= 5;
-        assertTrue(arr1[0].length==4);
-        System.out.println(arr1[0][4]);
+
+    }
+
+    @Test
+    public void 중복검사(){
+        List<List<Integer>> list = target.arrToList(arr2);
+
+        target.checkDuplicatedArr(list);
     }
 }

@@ -2,6 +2,10 @@ package com.algorithm.hackerrank.graph;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * @link : https://www.hackerrank.com/challenges/journey-to-the-moon/problem
@@ -31,24 +35,56 @@ public class JourneyToTheMoon {
         return 0;
     }
 
-
-    // 다른 배열에 값이 있는 경우 합치기
-    public int [][] checkDuplicatedArr(int[][] astronaut){
-//        List<List<Integer>> list = (List<List<Integer>>) Arrays.asList(astronaut);
-
-        for(int i=0; i<astronaut.length; i++){
-            if(astronaut[i+1] != null){
-
-                for(int j=0; i<2; j++){
-                    for (int k=0; k<2; k++){
-                        if(astronaut[i][j] == astronaut[i+1][k]){
-                            astronaut[i][astronaut[i].length+1]= 14;
-                        }
-                    }
-                }
-            }
-        }
-        return null;
+    public List<List<Integer>> arrToList(int[][] astronaut){
+        return Stream.of(astronaut)
+                .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                .collect(Collectors.toList())
+                ;
     }
 
+    public List<List<Integer>> checkDuplicatedArr(List<List<Integer>> list){
+        IntStream.range(0, list.size())
+                .filter(i -> !list.get(i+1).isEmpty())
+                .forEach(i ->{
+                    IntStream.range(i+1, list.size())
+//                            .filter(next ->{
+//                                return Optional
+//                                        .ofNullable(compareList(list.get(i), list.get(next)))
+//                                        .isPresent();
+//                            })
+                            .forEach(next ->{
+                               Optional.ofNullable(compareList(list.get(i), list.get(next)))
+                                       .ifPresent(value ->{
+                                           System.out.println("중복값 이써여 들어옵니다" + value.get());
+                                           list.get(i).add(value);
+                                           list.remove(next);
+                                       });
+                            });
+                });
+
+        return list;
+    }
+
+
+//    public IntStream compareList(List<Integer> t1, List<Integer> t2){
+//        return IntStream.range(0, 2)
+//                .filter(i -> {
+//                    return t1.contains(t2.get(i));
+//                })
+//                .map(i -> t2.get(i))
+//                ;
+//    }
+
+
+    /**
+     *
+     * @param t1 비교 기준 [A]
+     * @param t2 비교 대상 -> A : N 으로 비교를 돌아야함
+     * @return 포함된 값 반환
+    */
+    public Optional compareList(List<Integer> t1, List<Integer> t2){
+//        return Optional.of(t1)
+//                .map(m -> m.)
+        return null;
+    }
 }
