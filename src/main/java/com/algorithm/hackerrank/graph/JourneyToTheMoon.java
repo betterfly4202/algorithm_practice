@@ -43,48 +43,29 @@ public class JourneyToTheMoon {
     }
 
     public List<List<Integer>> checkDuplicatedArr(List<List<Integer>> list){
+
         IntStream.range(0, list.size())
-                .filter(i -> !list.get(i+1).isEmpty())
-                .forEach(i ->{
+                .filter(i -> list.size() > i+1)
+                .forEach(i -> {
                     IntStream.range(i+1, list.size())
-//                            .filter(next ->{
-//                                return Optional
-//                                        .ofNullable(compareList(list.get(i), list.get(next)))
-//                                        .isPresent();
-//                            })
                             .forEach(next ->{
-                               Optional.ofNullable(compareList(list.get(i), list.get(next)))
-                                       .ifPresent(value ->{
-                                           System.out.println("중복값 이써여 들어옵니다" + value.get());
-                                           list.get(i).add(value);
-                                           list.remove(next);
-                                       });
+                                if (list.size() > next){
+                                    if(compare(list.get(i), list.get(next))){
+                                        list.get(i).addAll(list.get(next));
+                                        list.remove(next);
+                                    }
+                                }
                             });
-                });
+                })
+        ;
 
         return list;
     }
 
 
-//    public IntStream compareList(List<Integer> t1, List<Integer> t2){
-//        return IntStream.range(0, 2)
-//                .filter(i -> {
-//                    return t1.contains(t2.get(i));
-//                })
-//                .map(i -> t2.get(i))
-//                ;
-//    }
-
-
-    /**
-     *
-     * @param t1 비교 기준 [A]
-     * @param t2 비교 대상 -> A : N 으로 비교를 돌아야함
-     * @return 포함된 값 반환
-    */
-    public Optional compareList(List<Integer> t1, List<Integer> t2){
-//        return Optional.of(t1)
-//                .map(m -> m.)
-        return null;
+    public boolean compare(List<Integer> t1, List<Integer> t2){
+        return IntStream.range(0, 1)
+                .anyMatch(i -> t1.contains(t2.get(i)));
     }
+
 }

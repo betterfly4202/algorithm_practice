@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -19,8 +20,6 @@ public class JourneyToTheMoonTest {
             };
     private int [][] arr3 = {{0, 2}};
     private int [][] arr2 = {{0, 1}, {2, 3}, {0, 4}, {1, 5}, {3, 5}};
-
-    private int [] arr4 = {0, 2, 3, 5};
 
     @Before
     public void init(){
@@ -43,10 +42,25 @@ public class JourneyToTheMoonTest {
 
     }
 
+
+    /**
+     *  {{0, 1}, {2, 3}, {0, 4}, {1, 5}, {3, 5}};
+     *
+     *  {0,1, 0, 4, 1, 5, 3 ,5, 2, 3}
+     */
     @Test
     public void 중복검사(){
         List<List<Integer>> list = target.arrToList(arr2);
 
-        target.checkDuplicatedArr(list);
+
+//        Optional.ofNullable(target.compare(list.get(0), list.get(3)))
+//                .ifPresent(v ->{
+//                    list.get(0).addAll(list.get(3));
+//                    list.remove(3);
+//                });
+
+        list = target.checkDuplicatedArr(list);
+
+        list.size();
     }
 }
