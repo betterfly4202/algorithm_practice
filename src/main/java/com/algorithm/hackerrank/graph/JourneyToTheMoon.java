@@ -1,8 +1,9 @@
 package com.algorithm.hackerrank.graph;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -29,21 +30,38 @@ public class JourneyToTheMoon {
         - (3 * 2) + (3 * 1) + (2 * 1)
         > result = 11
      */
-    static int journeyToMoon(int n, int[][] astronaut) {
-        assert n == 1;
+    int journeyToMoon(int n, int[][] astronaut) {
+//        assert n == 1;
+        List<Set<Integer>> list = this.arrToList(astronaut);
 
-        return 0;
+        return calculator(checkDuplicatedArr(list));
     }
 
-    public List<List<Integer>> arrToList(int[][] astronaut){
+    public int calculator(List<Set<Integer>> list){
+        int sum = 0;
+        for(int i=0; i<list.size(); i++){
+            int s = list.get(i).size();
+
+            if(list.size() > i+1){
+                for(int j=i+1; j<list.size(); j++){
+                    sum += s + list.get(j).size();
+                }
+            }else{
+                sum = s;
+            }
+        }
+
+        return sum;
+    }
+
+    public List<Set<Integer>> arrToList(int[][] astronaut){
         return Stream.of(astronaut)
-                .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toSet()))
                 .collect(Collectors.toList())
                 ;
     }
 
-    public List<List<Integer>> checkDuplicatedArr(List<List<Integer>> list){
-
+    public List<Set<Integer>> checkDuplicatedArr(List<Set<Integer>> list){
         IntStream.range(0, list.size())
                 .filter(i -> list.size() > i+1)
                 .forEach(i -> {
@@ -52,8 +70,24 @@ public class JourneyToTheMoon {
                                 if (list.size() > next){
                                     if(compare(list.get(i), list.get(next))){
                                         list.get(i).addAll(list.get(next));
+
                                         list.remove(next);
+                                        checkDuplicatedArr(list);
                                     }
+
+
+
+//                                    when List Collection
+//                                    if(compare(list.get(i), list.get(next))){
+//                                        list.get(i).addAll(list.get(next));
+//                                        List<Integer> temp = distinct(list.get(i));
+//                                        list.add(temp);
+//
+//                                        list.remove(i);
+//                                        list.remove(next);
+//
+//                                        checkDuplicatedArr(list);
+//                                    }
                                 }
                             });
                 })
@@ -63,9 +97,27 @@ public class JourneyToTheMoon {
     }
 
 
+
+    public List<Integer> distinct(List<Integer> list){
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
+
     public boolean compare(List<Integer> t1, List<Integer> t2){
-        return IntStream.range(0, 1)
+        return IntStream.range(0, t2.size())
                 .anyMatch(i -> t1.contains(t2.get(i)));
     }
 
+    public boolean compare(Set<Integer> t1, Set<Integer> t2){
+        return IntStream.range(0, t2.size())
+                .anyMatch(i -> t1.contains(t2.iterator().next()));
+    }
+
+    public List<List<Integer>> distinctElement(List<List<Integer>> list){
+        list.stream()
+                .flatMap(v -> v.stream().distinct())
+                .collect(Collectors.toList());
+
+        return list;
+    }
 }

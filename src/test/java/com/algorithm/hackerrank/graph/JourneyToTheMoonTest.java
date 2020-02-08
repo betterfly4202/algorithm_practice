@@ -5,7 +5,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -15,11 +16,12 @@ public class JourneyToTheMoonTest {
     private int [][] arr = new int[1][1];
 
     private int [][] arr1 = {
-                {1, 2, 3},
+                {1, 2},
                 {2, 3}
             };
     private int [][] arr3 = {{0, 2}};
     private int [][] arr2 = {{0, 1}, {2, 3}, {0, 4}, {1, 5}, {3, 5}};
+    private int [][] arr4 = {{0, 1}, {2, 3}, {0, 4}};
 
     @Before
     public void init(){
@@ -29,8 +31,10 @@ public class JourneyToTheMoonTest {
 
     @Test
     public void 검증(){
+
+//        System.out.println(target.journeyToMoon(4, arr1));
         assert target.journeyToMoon(4, arr1) == 3;
-        assert target.journeyToMoon(5, arr2) == 6;
+        assert target.journeyToMoon(5, arr4) == 6;
         assert target.journeyToMoon(4, arr3) == 5;
     }
 
@@ -50,17 +54,25 @@ public class JourneyToTheMoonTest {
      */
     @Test
     public void 중복검사(){
-        List<List<Integer>> list = target.arrToList(arr2);
-
-
-//        Optional.ofNullable(target.compare(list.get(0), list.get(3)))
-//                .ifPresent(v ->{
-//                    list.get(0).addAll(list.get(3));
-//                    list.remove(3);
-//                });
+        List<Set<Integer>> list = target.arrToList(arr2);
+        List<Set<Integer>> list2 = target.arrToList(arr4);
 
         list = target.checkDuplicatedArr(list);
+        list2 = target.checkDuplicatedArr(list2);
 
         list.size();
+        list2.size();
+    }
+
+    @Test
+    public void 군집화(){
+        List<Integer> a1 = Arrays.asList(1,2,3,3,3,4);
+        List<Integer> a2 = Arrays.asList(2,3,4);
+
+        List<Integer> a3 = a2.stream().filter(e -> a1.contains(e)).distinct().collect(Collectors.toList());
+
+        System.out.println(a2);
+        System.out.println(a1);
+        System.out.println(a3);
     }
 }
