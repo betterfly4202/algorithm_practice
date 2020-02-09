@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -31,8 +33,20 @@ public class JourneyToTheMoon {
         > result = 11
      */
     int journeyToMoon(int n, int[][] astronaut) {
-//        assert n == 1;
         List<Set<Integer>> list = this.arrToList(astronaut);
+        AtomicInteger idx = new AtomicInteger();
+        for(; idx.get() < n; idx.getAndAdd(1)){
+            AtomicBoolean f = new AtomicBoolean(false);
+            list.forEach(v ->{
+                f.set(v.contains(idx.get()));
+            });
+
+            if(!f.get()){
+                Set s = new HashSet();
+                s.add(idx.get());
+                list.add(s);
+            }
+        }
 
         return calculator(checkDuplicatedArr(list));
     }
@@ -57,8 +71,7 @@ public class JourneyToTheMoon {
     public List<Set<Integer>> arrToList(int[][] astronaut){
         return Stream.of(astronaut)
                 .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toSet()))
-                .collect(Collectors.toList())
-                ;
+                .collect(Collectors.toList());
     }
 
     public List<Set<Integer>> checkDuplicatedArr(List<Set<Integer>> list){
@@ -95,13 +108,6 @@ public class JourneyToTheMoon {
 
         return list;
     }
-
-
-
-    public List<Integer> distinct(List<Integer> list){
-        return list.stream().distinct().collect(Collectors.toList());
-    }
-
 
     public boolean compare(List<Integer> t1, List<Integer> t2){
         return IntStream.range(0, t2.size())
