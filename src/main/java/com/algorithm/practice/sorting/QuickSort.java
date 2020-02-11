@@ -5,7 +5,7 @@ package com.algorithm.practice.sorting;
  * Date : 2019.08.18
  */
 public class QuickSort {
-    static int [] quickSort(int [] arr){
+    public static int [] quickSort(int [] arr){
         quickSort(arr, 0, arr.length-1);
         return arr;
     }
