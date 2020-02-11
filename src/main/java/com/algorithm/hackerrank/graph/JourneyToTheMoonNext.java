@@ -103,8 +103,6 @@ public class JourneyToTheMoonNext {
         }
 
         return false;
-//        return IntStream.range(0, t2.size())
-//                .anyMatch(i -> t1.contains(t2.iterator().next()));
     }
 
     static public int calculator(List<Set<Integer>> list){
