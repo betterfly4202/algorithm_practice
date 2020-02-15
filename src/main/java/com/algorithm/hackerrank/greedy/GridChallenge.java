@@ -1,49 +1,51 @@
 package com.algorithm.hackerrank.greedy;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  * Created by betterfly
- * Date : 2019.06.16
+ * Date : 2020.02.15
  */
 
 // https://www.hackerrank.com/challenges/grid-challenge/problem
 public class GridChallenge {
-    static String gridChallenge(String[] grid) {
+    static String solution(String[] grid) {
+        grid = sort(grid);
+        for(int i=0; i<grid[0].length(); i++){
+            int temp = (int)grid[0].charAt(i);
 
-        return null;
-    }
+            for(int j=1; j<grid.length; j++){
+                if(temp > grid[j].charAt(i)){
+                    return "NO";
+                }
 
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        int t = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int tItr = 0; tItr < t; tItr++) {
-            int n = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-            String[] grid = new String[n];
-
-            for (int i = 0; i < n; i++) {
-                String gridItem = scanner.nextLine();
-                grid[i] = gridItem;
+                temp = grid[j].charAt(i);
             }
-
-            String result = gridChallenge(grid);
-
-            bufferedWriter.write(result);
-            bufferedWriter.newLine();
         }
 
-        bufferedWriter.close();
+        return "YES";
+    }
 
-        scanner.close();
+    public static String [] sort(String [] grid){
+        int [] arr = new int[grid[0].length()];
+
+        for(int i=0; i<grid.length; i++){
+            for(int j=0; j<grid[i].length(); j++){
+                arr[j] =(int)grid[i].charAt(j);
+            }
+
+            Arrays.sort(arr);
+            grid[i] = rerange(arr);
+        }
+
+        return grid;
+    }
+
+    private static String rerange(int [] arr){
+        String result = "";
+        for(int i=0; i<arr.length; i++){
+            result += (char)arr[i];
+        }
+        return result;
     }
 }
