@@ -1,11 +1,11 @@
-package com.algorithm.hackerrank.search;
+package com.algorithm.hackerrank.search.gridlandMetro;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GridlandMetro {
+public class SolutionWithMap {
     /**
      * @link : https://www.hackerrank.com/challenges/gridland-metro/problem
      * @param n row(행), 세로
@@ -14,7 +14,7 @@ public class GridlandMetro {
      * @param track 2차원 배열 [start ~ end]
      * @return track이 거치지 않은 공간의 수
      */
-    static int gridlandMetro(int n, int m, int k, int[][] track) {
+    public static int gridlandMetro(int n, int m, int k, int[][] track) {
         Map<Integer, List<Boolean>> lampMap = new HashMap<>();
         for(int i=0; i<n; i++){
             List<Boolean> list = new ArrayList<>();
@@ -25,24 +25,20 @@ public class GridlandMetro {
             lampMap.put(i, list);
         }
 
+        int trueCount =0;
         for(int i=0; i<k; i++){
             int r = track[i][0] - 1;
 
             for(int j=track[i][1]-1; j<=track[i][2]-1; j++){
-                lampMap.get(r).set(j, true);
-            }
-        }
-
-        int result = 0;
-        for(int i=0; i<lampMap.size(); i++){
-            for(int j=0; j<lampMap.get(i).size(); j++){
-                if(!lampMap.get(i).get(j)){
-                    result++;
+                if(!lampMap.get(r).get(j)){
+                    lampMap.get(r).set(j, true);
+                    trueCount++;
                 }
+
             }
         }
 
-        return result;
+        return n*m-trueCount;
     }
 }
 
