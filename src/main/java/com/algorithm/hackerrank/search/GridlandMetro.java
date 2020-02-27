@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class GridlandMetro {
-    // https://www.hackerrank.com/challenges/gridland-metro/problem
-
     /**
-     *
+     * @link : https://www.hackerrank.com/challenges/gridland-metro/problem
      * @param n row(행), 세로
      * @param m column(열), 가로
      * @param k
@@ -31,11 +29,9 @@ public class GridlandMetro {
             int r = track[i][0] - 1;
 
             for(int j=track[i][1]-1; j<=track[i][2]-1; j++){
-                System.out.println("j == " + j);
                 lampMap.get(r).set(j, true);
             }
         }
-
 
         int result = 0;
         for(int i=0; i<lampMap.size(); i++){
@@ -46,7 +42,12 @@ public class GridlandMetro {
             }
         }
 
-
         return result;
     }
 }
+
+/*
+    timeout 이 발생함..
+    이중 loop를 제거하기 위한 방법..
+    2차원 (고차원) 배열에서 이중루프를 어떻게 제거할것인지 고민해보기
+ */
