@@ -1,8 +1,6 @@
-package com.algorithm.hackerrank.search;
+package com.algorithm.hackerrank.search.lilysHomework;
 
-import java.util.Arrays;
-
-public class LilysHomework {
+public class SolutionSwap {
     static int lilysHomework(int[] arr) {
         int result = 0;
 
