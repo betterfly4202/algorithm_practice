@@ -15,9 +15,9 @@ public class SolutionTest {
     @Test
     public void 검증(){
         assertTrue(Solution.lilysHomework(a) == 2);
-//        assertTrue(Solution.lilysHomework(b) == 2);
-//        assertTrue(Solution.lilysHomework(c) == 2);
-//        assertTrue(Solution.lilysHomework(d) == 0);
+        assertTrue(Solution.lilysHomework(b) == 2);
+        assertTrue(Solution.lilysHomework(c) == 2);
+        assertTrue(Solution.lilysHomework(d) == 0);
     }
 
     @Test

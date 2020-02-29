@@ -6,13 +6,16 @@ import java.util.Map;
 
 public class Solution {
     static int lilysHomework(int[] arr) {
-        int result = 0;
+        int ascCount = 0;
+        int descCount = 0;
         int [] ascArr  = new int [arr.length];
         int [] descArr = new int[arr.length];
+        int [] originArr = new int[arr.length];
 
         // array 복사
         System.arraycopy(arr, 0, ascArr, 0, arr.length);
         System.arraycopy(arr, 0, descArr, 0, arr.length);
+        System.arraycopy(arr, 0, originArr, 0, arr.length);
 
         for(int i=0; i<arr.length; i++){
             descArr[i] *= -1;
@@ -43,18 +46,38 @@ public class Solution {
             1, 3        1
          */
         for(int i=0; i<ascMap.size(); i++){
-            int temp = 0;
+            int ascValueIdx = 0;
             if(ascArr[i] != arr[i]){
-                // ascarr 의 위치를 알아야함
-//                temp = ascMap.get(ascArr[i]); // 3
-                int a = arr[i];
+                // ascArr 의 위치를 알아야함
+                ascValueIdx = ascMap.get(ascArr[i]); // 3
+                int changeValue = arr[i];
                 arr[i] = ascArr[i];
-                arr[temp] = a;
-                result++;
+                arr[ascValueIdx] = changeValue;
+                ascMap.replace(arr[i], i);
+                ascMap.replace(changeValue, ascValueIdx);
+                ascCount++;
             }
         }
 
-        return result;
+        for(int i=0; i<ascMap.size(); i++){
+            int descValueIdx = 0;
+            /*
+            3 4 2 5 1
+            5 4 2 3 1
+            5 4 3 2 1
+             */
+            if(descArr[i] != originArr[i]){
+                descValueIdx = descMap.get(descArr[i]);
+                int changeValue = originArr[i];
+                originArr[i] = descArr[i];
+                originArr[descValueIdx] = changeValue;
+                descMap.replace(originArr[i], i);
+                descMap.replace(changeValue, descValueIdx);
+                descCount++;
+            }
+        }
+
+        return ascCount > descCount ? descCount : ascCount;
     }
 
     private static int[] swap(int[] arr, int i, int temp, int jIdx) {
