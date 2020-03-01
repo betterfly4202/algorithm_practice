@@ -5,21 +5,27 @@ import org.junit.Test;
 import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
 public class SolutionTest {
     String [] a = {"2" ,"100" ,"12303479849857341718340192371","1","3084193741082937" ,"3084193741082938" ,"111" ,"200"};
+    String [] b = {"31415926535897932384626433832795", "1" , "3", "10", "3", "5"};
+    String [] c = {"1", "1" , "1", "10", "3", "5"};
 
     @Test
-    public void parseLong(){
-        String t1= "12303479849857341718340192371";
-        String t2= "31415926535897932384626433832795";
-        BigInteger big = new BigInteger(t1);
-        BigInteger big2 = new BigInteger(t2);
+    public void unsorted_with_quickSort(){
+//        print(Solution.bigSorting(a));
+//        print(Solution.bigSorting(b));
+        print(ComparableSolution.bigSorting(a));
+        print(ComparableSolution.bigSorting(b));
+        print(ComparableSolution.bigSorting(c));
 
-        System.out.println(big);
-        System.out.println(big2);
+    }
+
+    private void print(String [] arr){
+        Stream.of(arr).forEach(v -> System.out.println(v));
     }
 
     @Test
@@ -58,7 +64,7 @@ public class SolutionTest {
 
     @Test
     public void 퀵_소트(){
-        String [] cc = {"123", "13342", "198273", "5123","23299", "232", "1442"};
+        String [] cc = {"1", "3", "9", "5","4", "2", "6"};
 
         Solution.quickSort(cc);
         System.out.println(cc);
