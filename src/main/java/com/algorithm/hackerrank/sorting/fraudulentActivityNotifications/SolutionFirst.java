@@ -1,20 +1,12 @@
 package com.algorithm.hackerrank.sorting.fraudulentActivityNotifications;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class Solution {
+public class SolutionFirst {
     static int activityNotifications(int[] expenditure, int d) {
         int result = 0;
 
-        List<Integer> alertList = new ArrayList<>();
-
-        int [] sortedArr = new int[expenditure.length];
-        System.arraycopy(expenditure, 0, sortedArr, 0, expenditure.length);
-        Arrays.sort(sortedArr);
-
+        Map<Integer, Integer> alertMap = new HashMap<>();
 
         for(int i=0; i<expenditure.length-d+1; i++){
             List<Integer> tempList = new ArrayList<>();
@@ -23,12 +15,15 @@ public class Solution {
                 tempList.add(expenditure[j]);
             }
 
-            alertList.add(arrAvg(tempList, d));
+            alertMap.put(i, arrAvg(tempList, d));
         }
 
-        for(int i=0; i<alertList.size(); i++){
-            if(alertList.get(i) <= sortedArr[i+d-1]){
-                result ++;
+        for(int i=0; i<alertMap.size(); i++){
+            for(int j=i+d; j<expenditure.length; j++){
+                if (alertMap.get(i) <= expenditure[j]){
+                    result ++;
+                    break;
+                }
             }
         }
 
