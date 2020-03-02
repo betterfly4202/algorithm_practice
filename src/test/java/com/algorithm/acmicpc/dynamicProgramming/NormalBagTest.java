@@ -18,8 +18,21 @@ public class NormalBagTest {
 
     @Test
     public void  검증(){
-//        assertTrue(NormalBag.solution(wValue, 7) == 14);
-        assertTrue(NormalBag.solution(wValue2, 10) == 17);
+        assertTrue(NormalBag.solution(wValue, 7) == 14);
+//        assertTrue(NormalBag.solution(wValue2, 10) == 17);
+    }
+
+    @Test
+    public void 배열_공간확인(){
+        int []dp = new int[100];
+
+        for(int i=0; i<100; i++){
+            dp[i] = i;
+        }
+
+        System.out.println(dp[0]);
+        System.out.println(dp[99]);
+        System.out.println(dp.length);
     }
 
 }

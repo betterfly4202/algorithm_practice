@@ -1,9 +1,7 @@
 package com.algorithm.acmicpc.dynamicProgramming;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicReference;
 
 // https://www.acmicpc.net/problem/12865
 public class NormalBag {
@@ -41,37 +39,26 @@ public class NormalBag {
     }
 
     public static int solution(int [][] wValue, int K){
-        /*
-            1. 무게가 K보다 작은 것들만
-            2. 담을 수 있는 무게의 가치 합 -> Map
-                -> 기존에 Map에 담겨진 Key값들과 합을 전부 확인해야 함.(2중 loop 발생)
-         */
-        Map<Integer, Integer> resultMap = new HashMap<>();
+        int [] N = new int[100];
 
-        for(int i=0; i<wValue.length; i++){
-            int compareValue = wValue[i][0];
+        for (int i = 0; i < wValue.length ; i++) {
+            int weight = wValue[i][0];
 
-            if(wValue[i][0] <= K){
-                if(resultMap.size() > 0){
-                    for (Integer key : resultMap.keySet()) {
-                        if(compareValue + key <= K){
-                            resultMap.put(key+wValue[i][0], resultMap.get(key) + wValue[i][1]);
-                            break;
+            if(weight <= K){
+                N[weight] = wValue[i][1];
+
+                for(int j=0; j<100; j++){
+                    if(N[j] != 0){
+                        if (weight+j <= K){
+                            N[weight+j] = N[weight] + N[j];
                         }
                     }
+
                 }
-                resultMap.put(compareValue, wValue[i][1]);
             }
         }
 
-        AtomicReference<Integer> result = new AtomicReference<>(0);
-        resultMap.values().stream()
-                .filter(value -> value > result.get())
-                .forEach(v ->{
-                    result.set(v.intValue());
-        });
-
-
-        return result.get();
+        Arrays.sort(N);
+        return N[N.length-1];
     }
 }
