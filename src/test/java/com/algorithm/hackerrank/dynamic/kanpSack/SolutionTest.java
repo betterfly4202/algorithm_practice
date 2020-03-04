@@ -32,20 +32,13 @@ public class SolutionTest {
     int [] f = {4, 7};
 
     @Test
-    public void asdf(){
-//        assertThat(Solution.unboundedKnapsack(12, a), is(12));
-//        assertThat(Solution.unboundedKnapsack(9, b), is(9));
-//        assertThat(Solution.unboundedKnapsack(21, c), is(21));
-//        assertThat(Solution.unboundedKnapsack(31, c), is(30));
-//        assertThat(Solution.unboundedKnapsack(13, d), is(13));
-//        assertThat(Solution.unboundedKnapsack(11, e), is(10));
+    public void 검증(){
+        assertThat(Solution.unboundedKnapsack(12, a), is(12));
+        assertThat(Solution.unboundedKnapsack(9, b), is(9));
+        assertThat(Solution.unboundedKnapsack(21, c), is(21));
+        assertThat(Solution.unboundedKnapsack(31, c), is(30));
+        assertThat(Solution.unboundedKnapsack(13, d), is(13));
+        assertThat(Solution.unboundedKnapsack(11, e), is(10));
         assertThat(Solution.unboundedKnapsack(22, f), is(22));
     }
-
-    @Test
-    public void assadf(){
-        System.out.println(21%9);
-
-    }
-
 }
