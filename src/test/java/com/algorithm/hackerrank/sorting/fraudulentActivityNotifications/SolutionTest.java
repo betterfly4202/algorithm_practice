@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class SolutionTest {
@@ -16,9 +17,13 @@ public class SolutionTest {
 
     @Test
     public void 검증(){
-        assertTrue(Solution.activityNotifications(a, 3) == 1);
-        assertTrue(Solution.activityNotifications(b, 5) == 2);
-        assertTrue(Solution.activityNotifications(c, 4) == 0);
+//        assertThat(Solution.activityNotifications(a, 3), is(1));
+//        assertThat(Solution.activityNotifications(b, 5), is(2));
+//        assertThat(Solution.activityNotifications(c, 4), is(0));
+
+        assertThat(Solve.activityNotifications(a, 3), is(1));
+        assertThat(Solve.activityNotifications(b, 5), is(2));
+        assertThat(Solve.activityNotifications(c, 4), is(0));
 
     }
 
