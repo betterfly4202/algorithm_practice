@@ -3,9 +3,7 @@ package com.algorithm.pragrammers.sort.biggestNumber;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -43,15 +41,14 @@ public class SolutionTest {
         int [] n2 = {3, 30, 34, 5, 9};
 
 
-        Map<Integer, List<Integer>> m = solution.sortMap(n2);
+        Map<Integer, List<String>> m = solution.sortMap(n2);
 
         assertTrue(m.get(3).size() == 3);
-        assertTrue(m.get(5).get(0) == 5);
     }
 
     @Test
     public void 숫자_합치기(){
-        List<Integer> list = Arrays.asList(10,7,8,3,2);
+        List<String> list = Arrays.asList("10","7","8","3","2");
         String result = solution.combineReverseArray(list);
 
         assertTrue(result.equals("107832"));
@@ -60,21 +57,12 @@ public class SolutionTest {
     @Test
     public void array_재정렬(){
         //given
-        List<Integer> list = Arrays.asList(347, 34, 3, 30);
+        List<String> list = new LinkedList<>(Arrays.asList("347", "34", "3", "30"));
 
-        //when
-        int a = 32135;
-
-        assertTrue(list.get(0) == 347);
-        assertTrue(list.get(0) == 344);
-        assertTrue(list.get(0) == 325);
-        assertTrue(list.get(1) == 32135);
+//        //when
+        String input = "32135";
+        List<String> result = solution.compareAdd(list, input);
+//
+        System.out.println(result);
     }
-
-
-    /*
-        3473213534330
-
-
-     */
 }

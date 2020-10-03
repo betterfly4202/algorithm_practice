@@ -26,7 +26,7 @@ public class Solution {
      */
 
     public String solution(int[] numbers) {
-        Map<Integer, List<Integer>> m = sortMap(numbers);
+        Map<Integer, List<String>> m = sortMap(numbers);
 
         String answer = "";
 
@@ -39,10 +39,10 @@ public class Solution {
         return answer;
     }
 
-    public String combineReverseArray(List<Integer> list){
+    public String combineReverseArray(List<String> list){
         String str = "";
 
-        for (int i : list){
+        for (String i : list){
             str = str+i;
         }
 
@@ -55,27 +55,14 @@ public class Solution {
          3. 키가 같을때, 무조건 다음수보다 큰 것으로 정렬
          4. 마지막 자리가 무조건 맨 앞자리보다 커야함
      */
-    public Map<Integer, List<Integer>> sortMap(int [] numbers){
-        Map<Integer, List<Integer>> m = new HashMap<>();
+    public Map<Integer, List<String>> sortMap(int [] numbers){
+        Map<Integer, List<String>> m = new HashMap<>();
 
         for (int i = 0; i <numbers.length ; i++) {
             int key = getNum(numbers[i], 0);
 
-            List<Integer> list = m.getOrDefault(key, new LinkedList<>());
-            if(list.isEmpty()){
-                list.add(numbers[i]);
-            }else {
-                for (int j = 0; j <list.size() ; j++) {
-                    int compare = getNum(numbers[i], String.valueOf(numbers[i]).length()-1);
-                    if(list.get(j) < compare){
-                        list.add(j, numbers[i]);
-                    }else{
-                        list.add(numbers[i]);
-                    }
-
-                    break;
-                }
-            }
+            List<String> list = m.getOrDefault(key, new LinkedList<>());
+            list = compareAdd(list, String.valueOf(numbers[i]));
 
             m.put(key, list);
         }
@@ -87,5 +74,34 @@ public class Solution {
     private int getNum(int target, int index){
         String first = String.valueOf(target);
         return Integer.parseInt(String.valueOf(first.charAt(index)));
+    }
+
+    public List<String> compareAdd(List<String> list, String input){
+        for (int i = 0; i <list.size() ; i++) {
+            for (int j = 0; j <=list.get(i).length()-1 ; j++) {
+                if (list.get(i).length() == 1 && input.length() > 1){
+
+                    if(list.get(i).charAt(0) > input.charAt(input.length()-1)){
+                        list.add(i+1, input);
+                    }else{
+                        list.add(i, input);
+                    }
+
+                    return list;
+                }
+
+                if (list.get(i).length() <= input.length()){
+                    if(input.charAt(j) >= list.get(i).charAt(0) || list.get(i).charAt(j) < input.charAt(j)){
+                        list.add(i, input);
+                        return list;
+                    }
+                }
+            }
+
+
+        }
+
+        list.add(input);
+        return list;
     }
 }
