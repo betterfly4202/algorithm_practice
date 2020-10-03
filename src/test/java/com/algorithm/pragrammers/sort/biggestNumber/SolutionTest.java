@@ -23,14 +23,17 @@ public class SolutionTest {
         //given
         int [] n1 = {6, 10, 2};
         int [] n2 = {3, 30, 34, 5, 9};
+        int [] n3 = {3, 30, 34, 345, 5, 9};
 
         //when
 //        String result1 = solution.solution(n1);
         String result2 = solution.solution(n2);
+        String result3 = solution.solution(n3);
 
         //then
 //        assertTrue(result1.equals("6210"));
-        assertTrue(result2.equals("9534330"));
+//        assertTrue(result2.equals("9534330"));
+        assertTrue(result3.equals("9534534330"));
     }
 
     @Test
@@ -38,6 +41,7 @@ public class SolutionTest {
         //given
         int [] n1 = {6, 10, 2};
         int [] n2 = {3, 30, 34, 5, 9};
+
 
         Map<Integer, List<Integer>> m = solution.sortMap(n2);
 
@@ -52,4 +56,25 @@ public class SolutionTest {
 
         assertTrue(result.equals("107832"));
     }
+
+    @Test
+    public void array_재정렬(){
+        //given
+        List<Integer> list = Arrays.asList(347, 34, 3, 30);
+
+        //when
+        int a = 32135;
+
+        assertTrue(list.get(0) == 347);
+        assertTrue(list.get(0) == 344);
+        assertTrue(list.get(0) == 325);
+        assertTrue(list.get(1) == 32135);
+    }
+
+
+    /*
+        3473213534330
+
+
+     */
 }

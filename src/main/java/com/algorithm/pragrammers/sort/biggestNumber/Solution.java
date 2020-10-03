@@ -32,7 +32,6 @@ public class Solution {
 
         for (int i = 9; i >= 0; i--) {
             if (m.get(i)!= null){
-                Collections.reverse(m.get(i));
                 answer += combineReverseArray(m.get(i));
             }
 
@@ -54,19 +53,39 @@ public class Solution {
          1. 2자리 이상인 경우 쪼개야함
          2. 무조건 맨 앞자리가 제일 큰 수
          3. 키가 같을때, 무조건 다음수보다 큰 것으로 정렬
+         4. 마지막 자리가 무조건 맨 앞자리보다 커야함
      */
     public Map<Integer, List<Integer>> sortMap(int [] numbers){
         Map<Integer, List<Integer>> m = new HashMap<>();
 
         for (int i = 0; i <numbers.length ; i++) {
-            String first = String.valueOf(numbers[i]);
-            int key = Integer.parseInt(String.valueOf(first.charAt(0)));
+            int key = getNum(numbers[i], 0);
 
             List<Integer> list = m.getOrDefault(key, new LinkedList<>());
-            list.add(numbers[i]);
+            if(list.isEmpty()){
+                list.add(numbers[i]);
+            }else {
+                for (int j = 0; j <list.size() ; j++) {
+                    int compare = getNum(numbers[i], String.valueOf(numbers[i]).length()-1);
+                    if(list.get(j) < compare){
+                        list.add(j, numbers[i]);
+                    }else{
+                        list.add(numbers[i]);
+                    }
+
+                    break;
+                }
+            }
+
             m.put(key, list);
         }
 
         return m;
+    }
+
+
+    private int getNum(int target, int index){
+        String first = String.valueOf(target);
+        return Integer.parseInt(String.valueOf(first.charAt(index)));
     }
 }
