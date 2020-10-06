@@ -18,7 +18,6 @@ public class Solution {
     - numbers의 원소는 0 이상 1,000 이하입니다.
     - 정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.
 
-
     [입출력 예]
     numbers	            return
     [6, 10, 2]	        6210
@@ -32,6 +31,10 @@ public class Solution {
 
         for (int i = 9; i >= 0; i--) {
             if (m.get(i)!= null){
+                Collections.sort(m.get(i), (a,b) ->{
+                    return -Integer.compare(Integer.parseInt(a + b), Integer.parseInt(b + a));
+                });
+
                 answer += combineReverseArray(m.get(i));
             }
 
@@ -62,7 +65,7 @@ public class Solution {
             int key = getNum(numbers[i], 0);
 
             List<String> list = m.getOrDefault(key, new LinkedList<>());
-            list = compareAdd(list, String.valueOf(numbers[i]));
+            list.add(String.valueOf(numbers[i]));
 
             m.put(key, list);
         }
@@ -75,6 +78,7 @@ public class Solution {
         String first = String.valueOf(target);
         return Integer.parseInt(String.valueOf(first.charAt(index)));
     }
+
 
     public List<String> compareAdd(List<String> list, String input){
         for (int i = 0; i <list.size() ; i++) {

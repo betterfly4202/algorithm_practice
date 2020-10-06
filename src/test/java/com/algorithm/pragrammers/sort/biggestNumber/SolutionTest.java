@@ -35,11 +35,17 @@ public class SolutionTest {
     }
 
     @Test
+    public void 합산(){
+        int a = 30, b = 345;
+
+        int a1 = a+b;
+    }
+
+    @Test
     public void 숫자_조각내기(){
         //given
         int [] n1 = {6, 10, 2};
         int [] n2 = {3, 30, 34, 5, 9};
-
 
         Map<Integer, List<String>> m = solution.sortMap(n2);
 
