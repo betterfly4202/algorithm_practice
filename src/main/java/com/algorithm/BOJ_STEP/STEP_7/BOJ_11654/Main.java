@@ -1,4 +1,4 @@
-package com.algorithm.BOJ_STEP.STEP_7.BOJ_11654;
+4545package com.algorithm.BOJ_STEP.STEP_7.BOJ_11654;
 
 import java.util.Scanner;
 
