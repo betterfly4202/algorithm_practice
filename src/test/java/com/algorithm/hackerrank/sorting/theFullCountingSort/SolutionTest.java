@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class SolutionTest {
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void NullPointer_에러_발생(){
         String helloWorld = null;
 

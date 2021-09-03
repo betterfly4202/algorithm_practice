@@ -9,9 +9,4 @@ public class ThreeTest {
     String a = "(())";
     String b = "(())))(";
     String c = "))";
-
-    @Test
-    public void 검증f(){
-
-    }
 }

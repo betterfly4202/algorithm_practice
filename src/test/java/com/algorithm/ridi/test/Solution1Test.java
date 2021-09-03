@@ -12,7 +12,7 @@ public class Solution1Test {
     @Test
     public void 테스트(){
 //        assertFalse(Solution1.solution(a));;
-        assertTrue(Solution1.solution(b));;
+        assertFalse(Solution1.solution(b));;
     }
 
 

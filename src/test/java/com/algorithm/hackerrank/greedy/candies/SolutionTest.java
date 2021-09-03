@@ -19,10 +19,4 @@ public class SolutionTest {
     }
 
 
-    @Test
-    public void 검증(){
-        assertThat(solution.candies(3, arr1) , is(4));
-        assertThat(solution.candies(10, arr2) , is(19));
-        assertThat(solution.candies(8, arr3) , is(12));
-    }
 }

@@ -28,16 +28,6 @@ public class JourneyToTheMoonTest {
         target = new JourneyToTheMoon();
     }
 
-
-    @Test
-    public void 검증(){
-
-//        System.out.println(target.journeyToMoon(4, arr1));
-        assert target.journeyToMoon(4, arr1) == 3;
-        assert target.journeyToMoon(5, arr4) == 6;
-        assert target.journeyToMoon(4, arr3) == 5;
-    }
-
     @Test
     public void 리스트_중복검사(){
         List<Integer> a = Arrays.asList(1,2,3);

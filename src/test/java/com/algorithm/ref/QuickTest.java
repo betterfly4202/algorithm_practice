@@ -105,62 +105,6 @@ public class QuickTest {
 
     }
 
-
-    @Test
-    public void as213adf(){
-        List<Integer> arr= Arrays.asList(2, 5, 4, 6, 8, 2);
-        int x = 3;
-//        List<Integer> arr= Arrays.asList(1, 2, 3, 1, 2);
-//        int x = 1;
-
-
-        Map<List<Integer>, Integer> map = new HashMap<>();
-        List<Integer> minList = new ArrayList<>();
-        for (int i=0; i<arr.size()-x+1; i++){
-            minList.add(arr.get(i));
-
-            if(i!=0 && i%(x-1)==0){
-                map.put(minList, Collections.min(minList));
-                minList.remove(i-x);
-                i +=x;
-            }
-        }
-        System.out.println(map);
-
-    }
-
-    /**
-     *  3번 제출답
-     */
-
-    @Test
-    public void temp(){
-//        int minMax=0;
-//        for (int i=0; i<arr.size()-x+1; i++){
-//            int minValue = arr.get(i);
-//
-//            for(int j=i+1; j<i+x; j++){
-//                if(minValue > arr.get(j)){
-//                    minValue = arr.get(j);
-//                }
-//            }
-//
-//            if(minMax < minValue){
-//                minMax = minValue;
-//            }
-//        }
-//
-//        return minMax;
-    }
-
-
-    public static int segment(int x, List<Integer> arr) {
-        // Write your code here
-
-        return 0;
-
-    }
-
     @Test
     public void requestsServed() {
         List<Integer> timestamp= Arrays.asList(1, 2, 2, 3, 4, 5, 6, 6, 13, 16);

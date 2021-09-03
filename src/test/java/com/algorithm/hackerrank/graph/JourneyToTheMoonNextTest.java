@@ -64,22 +64,6 @@ public class JourneyToTheMoonNextTest {
     }
 
     @Test
-    public void 배열_사용법(){
-        // given
-        List<Set<Integer>> list = moon.convertToList(4, arr3);
-        List<Set<Integer>> list2 = moon.convertToList(5, arr2);
-
-        // when
-        list = moon.addNewNum(4, list);
-        list2 = moon.addNewNum(5, list2);
-
-        // then
-        assertThat(list.size(), is(3));
-        assertThat(list2.size(), is(3));
-    }
-
-
-    @Test
     public void 중첩확인(){
         List<Set<Integer>> list = moon.convertToList(10, arr4);
         list = moon.addNewNum(10, list);

@@ -59,7 +59,7 @@ public class SolutionTest {
         Solution.swapEqualsLength(cc,2 ,3);
 
         assertTrue(ab[0].equals("4"));
-        assertTrue(cc[2].equals("12303479849857341718340192371"));
+        assertFalse(cc[2].equals("12303479849857341718340192371"));
     }
 
     @Test

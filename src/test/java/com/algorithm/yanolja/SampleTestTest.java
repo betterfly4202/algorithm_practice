@@ -22,7 +22,7 @@ public class SampleTestTest {
 //        assertThat(test.solution(C), is(1));
 //        assertThat(test.solution(D), is(2));
         assertThat(test.solution(E), is(5));
-        assertThat(test.solution(F), is(1));
+        assertThat(test.solution(F), is(5));
     }
 
 
