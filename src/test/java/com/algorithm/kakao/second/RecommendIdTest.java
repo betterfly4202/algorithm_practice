@@ -14,6 +14,22 @@ class RecommendIdTest {
     }
 
     @Test
+    public void 전체_실행(){
+        String test1 ="z-+.^.";
+        String test2 ="...!@BaT#*..y.abcdefghijklm";
+        String test3 ="=.=";
+        String test4 ="123_.def";
+        String test5 ="abcdefghijklmn.p";
+
+//        System.out.println(recommendId.recommendUserId(test1));
+//        System.out.println(recommendId.recommendUserId(test2));
+//        System.out.println(recommendId.recommendUserId(test3));
+//        System.out.println(recommendId.recommendUserId(test4));
+        System.out.println(recommendId.recommendUserId(test5));
+
+    }
+
+    @Test
     public void 규식이_검증(){
         String test ="asdf";
         String test1 ="dfa01";
@@ -34,7 +50,7 @@ class RecommendIdTest {
     public void asdf(){
         String a = ".a..bD......D=c.";
 //        String a = ".a.dc.";
-        System.out.println(recommendId.reformId(a));;
+        System.out.println(recommendId.step2_reformId(a));;
     }
 
     @Test

@@ -5,30 +5,29 @@ import java.util.regex.Pattern;
 public class RecommendId {
 
     public String recommendUserId(String new_id){
-        new_id = toLowerCase(new_id);
-        new_id = reformId(new_id);
-        new_id = defaultId(new_id);
-        if (new_id.length() > 15){
-            new_id = cuttingLastPoint(new_id);
+        if(new_id.length() > 2){
+            new_id = step1_toLowerCase(new_id);
+            new_id = step2_reformId(new_id);
+            if (new_id.length() > 15){
+                new_id = cuttingLastPoint(new_id);
+            }
+            new_id = step3_removeFirstAndLastPoint(new_id);
         }
+        new_id = defaultId(new_id);
         new_id = appendLastValue(new_id);
         return new_id;
     }
 
-    public String toLowerCase(String id){
+    public String step1_toLowerCase(String id){
         return id.toLowerCase();
     }
 
     public boolean regex(String id){
-        String pattern = "^[a-z0-9-_.]$";
+        String pattern = "^[a-z0-9-_.]*$";
         return Pattern.matches(pattern, id);
     }
 
-//    public boolean checkSize(String id){
-//        return id.length() > 3 && id.length() < 16;
-//    }
-
-    public String reformId(String id){
+    public String step2_reformId(String id){
         String result = "";
         for (int i = 0; i < id.length() ; i++) {
             String append = String.valueOf(id.charAt(i));
@@ -36,20 +35,27 @@ public class RecommendId {
                 if(i > 1 && id.charAt(i-1) == '.' && id.charAt(i) == '.'){
                     continue;
                 }
-
-                if (i == 0 && id.charAt(i) == '.'){
-                    continue;
-                }else if(i > 0 && i == id.length()-1 && id.charAt(i) == '.'){
-                    continue;
-                }
-
-                if (result.length() == 0 && id.charAt(i) == '.'){
-                    continue;
-                }
                 result += append;
             }
         }
+
         return result;
+    }
+
+    public String step3_removeFirstAndLastPoint(String id){
+        if (id.length() < 1){
+            return id;
+        }
+
+        if (id.charAt(0) == '.'){
+            id = id.substring(1, id.length());
+        }
+
+        if (id.charAt(id.length()-1) == '.'){
+            id = id.substring(0, id.length()-2);
+        }
+
+        return id;
     }
 
     public String defaultId(String id){
@@ -62,14 +68,8 @@ public class RecommendId {
 
     public String cuttingLastPoint(String id){
         String result = id.substring(0, 15);
-
         if (result.charAt(result.length()-1) == '.'){
-            for (int i = 15; i < id.length(); i++) {
-                if (id.charAt(i) != '.'){
-                    result = result.substring(0, 14) + id.charAt(i);
-                    break;
-                }
-            }
+            return id.substring(0, result.length()-1);
         }
 
         return result;
