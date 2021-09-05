@@ -21,10 +21,10 @@ class RecommendIdTest {
         String test4 ="123_.def";
         String test5 ="abcdefghijklmn.p";
 
-//        System.out.println(recommendId.recommendUserId(test1));
-//        System.out.println(recommendId.recommendUserId(test2));
-//        System.out.println(recommendId.recommendUserId(test3));
-//        System.out.println(recommendId.recommendUserId(test4));
+        System.out.println(recommendId.recommendUserId(test1));
+        System.out.println(recommendId.recommendUserId(test2));
+        System.out.println(recommendId.recommendUserId(test3));
+        System.out.println(recommendId.recommendUserId(test4));
         System.out.println(recommendId.recommendUserId(test5));
 
     }

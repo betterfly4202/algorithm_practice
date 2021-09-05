@@ -2,9 +2,19 @@ package com.algorithm.kakao.second;
 
 import java.util.regex.Pattern;
 
+/**
+ *  https://baek-kim-dev.site/261?url=https://baek-kim-dev.site/261
+ */
 public class RecommendId {
 
+    /*
+    StringBuilder => 멀티스레드 동기화 지원 X, 단일스레드 성능 좋음
+    StringBuffer => synchronized 지원 -> 멀티스레드  기화
+    String == immutable하기 때문에 하나의 객체 공간, new String하는경우 다른 객체공간을 또 할당받음
+     */
     public String recommendUserId(String new_id){
+        StringBuilder sb = new StringBuilder();
+        StringBuffer sf = new StringBuffer();
         if(new_id.length() > 2){
             new_id = step1_toLowerCase(new_id);
             new_id = step2_reformId(new_id);
