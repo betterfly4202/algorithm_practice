@@ -20,7 +20,7 @@ public class SearchRank {
 
         for (int j = 0; j < query.length; j++) {
             int count = 0;
-            boolean flag = false;
+            boolean flag = true;
             for (int i = 0; i < members.size(); i++) {
                 String[] target = query[j].split("and");
                 List<String> targets = new LinkedList<>();
