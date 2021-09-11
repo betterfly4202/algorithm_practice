@@ -8,8 +8,8 @@ class Solution_2Test {
 
     @Test
     public void greedy(){
-        int n = 17;
-        int k = 4;
+        int n = 25;
+        int k = 3;
 
         System.out.println(Solution_2.solution(n, k));
     }
