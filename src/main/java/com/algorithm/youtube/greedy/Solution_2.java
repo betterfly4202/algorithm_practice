@@ -21,11 +21,11 @@ public class Solution_2 {
         int rest = rest(N,K);
         if (rest != 0){
             if(N < K){
-                cnt = cnt + (K-N);
+                cnt += (K-N);
                 N = K-N;
             }else{
-                cnt = rest;
-                N = N - rest;
+                cnt += rest;
+                N -= rest;
             }
         }else{
             N = divide(N,K);
