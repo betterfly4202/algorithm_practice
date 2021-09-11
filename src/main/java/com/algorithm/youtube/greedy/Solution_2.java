@@ -20,8 +20,13 @@ public class Solution_2 {
         }
         int rest = rest(N,K);
         if (rest != 0){
-            cnt = rest;
-            N = N - rest;
+            if(N < K){
+                cnt += (K-N);
+                N = K-N;
+            }else{
+                cnt += rest;
+                N -= rest;
+            }
         }else{
             N = divide(N,K);
             cnt ++;
