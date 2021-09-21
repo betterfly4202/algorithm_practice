@@ -25,8 +25,13 @@ class Solution_4Test {
         int result = Solution_4.getedGuildGroupCount(N, users);
         int result2 = Solution_4.getedGuildGroupCount(N, users2);
 
+        int result3 = Solution_4.sampleResult(N, users);
+        int result4 = Solution_4.sampleResult(N, users2);
+
         assertEquals(3, result);
         assertEquals(7, result2);
+        assertEquals(3, result3);
+        assertEquals(7, result4);
     }
 
 }

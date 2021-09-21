@@ -29,11 +29,32 @@ public class Solution_4 {
             if (cursor == temp.size()){
                 cnt++;
                 temp.clear();
-                continue;
             }else if ( (userList.size() - i) < userList.get(i)){
                 break;
             }
         }
         return cnt;
+    }
+    
+    public static int sampleResult(int N, String users){
+        int result = 0;
+        int cnt = 0;
+
+        List<Integer> userList = Arrays.stream(users.split(" "))
+                .map(Integer::parseInt)
+                .sorted()
+                .collect(Collectors.toList());
+
+
+        for (Integer integer : userList) {
+            cnt++;
+
+            if (integer <= cnt) {
+                result++;
+                cnt = 0;
+            }
+
+        }
+        return result;
     }
 }
