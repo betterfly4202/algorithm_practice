@@ -24,7 +24,6 @@ public class Solution_4 {
             }
         });
 
-
         return result + sum.toString();
     }
 }
