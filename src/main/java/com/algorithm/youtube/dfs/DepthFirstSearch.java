@@ -2,7 +2,7 @@ package com.algorithm.youtube.dfs;
 
 import java.util.*;
 
-public class Sample_1 {
+public class DepthFirstSearch {
     public static String dfs(int [][] graph){
         Stack<Integer> stack = new Stack<>();
         Map<Integer, Boolean> m = new HashMap<>();
@@ -41,5 +41,19 @@ public class Sample_1 {
         }
 
         return list.toString();
+    }
+
+    public static void dfsSolution(int x){
+        boolean [] visited = new boolean[9];
+        List<List<Integer>> graph = new ArrayList<>();
+
+        visited[x] = true;
+
+        for (int i = 0; i <graph.get(x).size() ; i++) {
+            int y = graph.get(x).get(i);
+            if(!visited[y]){
+                dfsSolution(y);
+            }
+        }
     }
 }

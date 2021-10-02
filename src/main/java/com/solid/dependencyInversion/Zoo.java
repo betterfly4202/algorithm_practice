@@ -13,13 +13,13 @@ import java.util.List;
     Cat, Dog는 low-level의 클래스구조가 된다.
 
     즉 동물원(Zoo)은 강아지(Dog)와 고양이(Cat)에 Dependency가 존재하는 것이다.
-    이처럼 High-Level의 모듈(Zoo)이 Low-level을 갖는 것이 직관적이고 자연스러운 것으로 보인다.
+    이처럼 High-Level의 모듈(Zoo)이 Low-level의 의존성을 갖는 것이 직관적이고 자연스러운 것으로 보인다.
 
     그런데 만약 여기에 몇개의 동물이 추가된다고 생각해보자.
     예를들어 양(Sheep), 소(Cow) 등이 추가된다고 생각하자.
-    그러면 {@link Cat}, {@link Dog}와 마찬가지로 동일한 인터페이스를 갖고 있는 Low-level의 모듈이 추가되며 Dependency가 추가로 생기게된다.
+    그러면 {@link Cat}, {@link Dog}와 마찬가지로 동일한 인터페이스를 갖고 있는 Low-level의 모듈이 추가되며 상위 레벨의 객체에 의존성이 추가된다.
 
-    이렇게 계속해서 high-level module의 dependency가 증가하게 되면, low-level의 증가에 따라 코드의 수정 및 관리에 어려움을 겪을 수 있다.
+    이렇게 계속해서 high-level module에서의 의존성이 추가된다면, low-level의 증가에 따라 코드의 수정 및 관리에 어려움을 겪을 수 있다.
 
     이를 해결하기 위해서 dependency inversion을 사용한다.
 
@@ -43,7 +43,6 @@ import java.util.List;
     이처럼 전통적인 의존관계(High level -> Low level)를 형성하는것이 아닌,
     중간에 추상화 계층을 두고 의존관계의 방향을 반대로 (Low level -> 추상계층(interface/abstract class)) 역전시키는 것을
     Dependency Inversion이라고 부른다.
-
  */
 public class Zoo {
     private Dog dog;
