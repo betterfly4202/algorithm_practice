@@ -2,8 +2,6 @@ package com.algorithm.youtube.dfs;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class Sample_1Test {
     int[][] graph = new int[][]{
             {},
@@ -19,7 +17,7 @@ class Sample_1Test {
 
     @Test
     public void DFS_탐색_순서를_찾는다(){
-        String result = Sample_1.dfs(graph);
+        String result = DepthFirstSearch.dfs(graph);
 
         System.out.println(result);
     }

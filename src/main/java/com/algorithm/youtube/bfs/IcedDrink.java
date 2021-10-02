@@ -1,44 +1,50 @@
 package com.algorithm.youtube.bfs;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class IcedDrink {
+    public static int [][] graph = new int[1001][1001];
+
+    public static int n;
+    public static int m;
     public static int resultCount(String size, String[] lines){
-        int result = 0;
-        Queue<Integer> q = new LinkedList<>();
-        int horizon = Integer.parseInt(size.split(" ")[0]);
-        int vertical = Integer.parseInt(size.split(" ")[1]);
+        n = Integer.parseInt(size.split(" ")[0]);
+        m = Integer.parseInt(size.split(" ")[1]);
 
-        boolean [][] checked = new boolean[horizon][vertical];
-
-        for (int i = 0; i <horizon ; i++) {
-            for (int j = 0; j <vertical ; j++) {
-                if(isClosed(lines[i].charAt(j))){
-                    checked[i][j] = true;
-                }
-                System.out.print(lines[i].charAt(j));
+        for (int i = 0; i <n ; i++) {
+            String str = lines[i];
+            for (int j = 0; j <m ; j++) {
+                graph[i][j] = str.charAt(j)- '0';
             }
-
-            System.out.println("\n========");
         }
 
-        int idx = 0;
-        while(true){
-//            lines[idx]
-
-            idx ++;
-            break;
+        int result = 0;
+        for (int i = 0; i <n ; i++) {
+            for (int j = 0; j <m ; j++) {
+                if(bfs(i, j)){
+                    result += 1;
+                }
+            }
         }
-
         return result;
     }
 
-    private static boolean isClosed(char c){
-        if(c == '0'){
+    public static boolean bfs(int x, int y){
+        if(x <= -1 || x >= n || y <= -1 || y >= m){
+            return false;
+        }
+
+        if(graph[x][y] == 0){
+            graph[x][y] = 1;
+
+
+            // graph 상하좌우 검증
+            bfs(x-1, y);
+            bfs(x, y-1);
+            bfs(x+1, y);
+            bfs(x, y+1);
             return true;
         }
 
         return false;
+
     }
 }
